@@ -80,7 +80,7 @@ Open IDA, start command line in order to put in pause pin, go on the debugger me
 
 1. Use following command line in order to enable debug:
     ```
-    pin.exe -pause_tool <num seconds> -t CodaPinTracer3232.dll -debugger -- <path_to_the_exe_to_be_instrumented>
+    pin.exe -pause_tool <num seconds> -t CodaPinTracer32.dll -debugger -- <path_to_the_exe_to_be_instrumented>
     ```
 2. Open your debugger and attach it to process with name equal to execuatable instrumented and not pin.exe
 
