@@ -1,0 +1,13 @@
+{
+	"results_path": "C:\\pin35\\Results",
+	"timestamped_folder" : true,
+	"main_log_name" : "main.rbp",
+	"thread_log_name" : "thread.rbp",
+	"report_filename": "report.json",
+	"filtered_writes": "",
+	"yara_exe_path": "",
+	"yara_rules_path": "",
+	"scylla_dumper_path": "",
+	"scylla_plugins_path": "",
+	"scylla_wrapper_path": ""
+}

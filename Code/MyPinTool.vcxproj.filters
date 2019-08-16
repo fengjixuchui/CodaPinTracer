@@ -1,0 +1,1064 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Documents">
+      <UniqueIdentifier>{b8dd2600-7302-4aa7-a99d-1607cd3cd4fb}</UniqueIdentifier>
+      <Extensions>txt;doc;html</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Helpers">
+      <UniqueIdentifier>{20abc4b2-3a8a-48c5-b8c3-40b36da1faa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Helpers">
+      <UniqueIdentifier>{b8f3d0cb-37c5-4fd5-8aa0-9ea2cc979d46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Hooks">
+      <UniqueIdentifier>{1a6e6e16-052d-4b06-9b2b-be475cd02bed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Hooks">
+      <UniqueIdentifier>{73b16fc3-10e8-4f1a-8d90-d120e993a640}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PINdemonium">
+      <UniqueIdentifier>{d44ca324-388e-4cc3-a1c6-c611bde6f446}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PINdemonium\OEP-Heuristics">
+      <UniqueIdentifier>{c82c1b21-c180-4abf-a4a2-b65a03c90ba4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PINdemonium">
+      <UniqueIdentifier>{e8c75c99-4367-48cf-ac32-a152bc7be725}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PINdemonium\OEP-Heuristics">
+      <UniqueIdentifier>{35aa198c-b8a2-4e0a-98e9-1ac38d9d7aa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Report">
+      <UniqueIdentifier>{a0afdd0c-1eb5-46d4-b858-d665ea95aedb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Report">
+      <UniqueIdentifier>{240004a1-4fab-4669-8086-858ce531f24d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Report\HeuristicsReports">
+      <UniqueIdentifier>{6129cd2d-c9b9-48d5-b78f-5e4eed7513fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Report\HeuristicsReports">
+      <UniqueIdentifier>{c2100b05-693b-4635-a84b-3fb97db9d848}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PINShield">
+      <UniqueIdentifier>{6db8d8ed-3592-4008-b781-79e9cf0ec77e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PINShield">
+      <UniqueIdentifier>{9f78bdfb-bdf9-4c41-9700-b3053a865a7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Suppli">
+      <UniqueIdentifier>{9b6bb058-bbf9-4919-ad84-1a42c1f53d84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Suppli">
+      <UniqueIdentifier>{8dec6967-03e7-4e9f-800d-4bc4b20e7283}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\libdft">
+      <UniqueIdentifier>{a8926b7b-b9df-4fb8-9752-6059f8af5a1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\libdft">
+      <UniqueIdentifier>{342ef669-8724-4eb2-9b86-d37cf83d5924}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tracer">
+      <UniqueIdentifier>{ade003a0-8bf0-4d42-9188-68e2b2b24120}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tracer">
+      <UniqueIdentifier>{9ab9e865-bf61-4aa5-8254-efb29405d73e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tracer\SysCallInfo">
+      <UniqueIdentifier>{85d20ae8-4db6-4710-92e4-d32131356404}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tracer\SysCallInfo">
+      <UniqueIdentifier>{d2b3b73f-ce17-4643-9262-b62af7bd253e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tracer\LibCallInfo">
+      <UniqueIdentifier>{7abb05cf-1cb7-4bd1-8bee-a182eacc34f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tracer\LibCallInfo">
+      <UniqueIdentifier>{dbbf45ae-3167-47ee-84f7-ed9e9b425b65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tracer\LibCallInfo\PyreboxDlls">
+      <UniqueIdentifier>{96eeb0ed-3b4a-4f37-a031-83672fd3a3d9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Heuristics.cpp">
+      <Filter>Source Files\PINdemonium\OEP-Heuristics</Filter>
+    </ClCompile>
+    <ClCompile Include="LongJumpHeuristic.cpp">
+      <Filter>Source Files\PINdemonium\OEP-Heuristics</Filter>
+    </ClCompile>
+    <ClCompile Include="EntropyHeuristic.cpp">
+      <Filter>Source Files\PINdemonium\OEP-Heuristics</Filter>
+    </ClCompile>
+    <ClCompile Include="PushadPopadHeuristic.cpp">
+      <Filter>Source Files\PINdemonium\OEP-Heuristics</Filter>
+    </ClCompile>
+    <ClCompile Include="GdbDebugger.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpOuterSectionHeuristic.cpp">
+      <Filter>Source Files\PINdemonium\OEP-Heuristics</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="ScyllaWrapperInterface.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="HookSyscalls.cpp">
+      <Filter>Source Files\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="HookFunctions.cpp">
+      <Filter>Source Files\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="FilterHandler.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcInfo.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="WxorXHandler.cpp">
+      <Filter>Source Files\PINdemonium</Filter>
+    </ClCompile>
+    <ClCompile Include="WriteInterval.cpp">
+      <Filter>Source Files\PINdemonium</Filter>
+    </ClCompile>
+    <ClCompile Include="OepFinder.cpp">
+      <Filter>Source Files\PINdemonium</Filter>
+    </ClCompile>
+    <ClCompile Include="YaraHeuristic.cpp">
+      <Filter>Source Files\PINdemonium\OEP-Heuristics</Filter>
+    </ClCompile>
+    <ClCompile Include="Report.cpp">
+      <Filter>Source Files\Report</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportObject.cpp">
+      <Filter>Source Files\Report</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportGeneralInformation.cpp">
+      <Filter>Source Files\Report</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportDump.cpp">
+      <Filter>Source Files\Report</Filter>
+    </ClCompile>
+    <ClCompile Include="Helper.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportJumpOuterSection.cpp">
+      <Filter>Source Files\Report\HeuristicsReports</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportLongJump.cpp">
+      <Filter>Source Files\Report\HeuristicsReports</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportYaraRules.cpp">
+      <Filter>Source Files\Report\HeuristicsReports</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportEntropy.cpp">
+      <Filter>Source Files\Report\HeuristicsReports</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportImportedFunction.cpp">
+      <Filter>Source Files\Report</Filter>
+    </ClCompile>
+    <ClCompile Include="jsoncpp.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="md5.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportMainModule.cpp">
+      <Filter>Source Files\Report</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessInjectionModule.cpp">
+      <Filter>Source Files\PINdemonium</Filter>
+    </ClCompile>
+    <ClCompile Include="HeapModule.cpp">
+      <Filter>Source Files\PINdemonium</Filter>
+    </ClCompile>
+    <ClCompile Include="PatternMatchModule.cpp">
+      <Filter>Source Files\PINShield</Filter>
+    </ClCompile>
+    <ClCompile Include="PolymorphicCodeHandlerModule.cpp">
+      <Filter>Source Files\PINShield</Filter>
+    </ClCompile>
+    <ClCompile Include="PINshield.cpp">
+      <Filter>Source Files\PINShield</Filter>
+    </ClCompile>
+    <ClCompile Include="FakeWriteHandler.cpp">
+      <Filter>Source Files\PINShield</Filter>
+    </ClCompile>
+    <ClCompile Include="FakeReadHandler.cpp">
+      <Filter>Source Files\PINShield</Filter>
+    </ClCompile>
+    <ClCompile Include="ExceptionHandler.cpp">
+      <Filter>Source Files\Suppli</Filter>
+    </ClCompile>
+    <ClCompile Include="GuardPageHandler.cpp">
+      <Filter>Source Files\Suppli</Filter>
+    </ClCompile>
+    <ClCompile Include="AssemblyHandler.cpp">
+      <Filter>Source Files\Suppli</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HiddenElements.cpp">
+      <Filter>Source Files\Suppli</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerTCP.cpp">
+      <Filter>Source Files\Suppli</Filter>
+    </ClCompile>
+    <ClCompile Include="libdft\libdft_api.cpp">
+      <Filter>Source Files\libdft</Filter>
+    </ClCompile>
+    <ClCompile Include="libdft\libdft_core.cpp">
+      <Filter>Source Files\libdft</Filter>
+    </ClCompile>
+    <ClCompile Include="libdft\tag_traits.cpp">
+      <Filter>Source Files\libdft</Filter>
+    </ClCompile>
+    <ClCompile Include="libdft\tagmap.cpp">
+      <Filter>Source Files\libdft</Filter>
+    </ClCompile>
+    <ClCompile Include="TaintAnalysis.cpp">
+      <Filter>Source Files\Suppli</Filter>
+    </ClCompile>
+    <ClCompile Include="SpecialHooks.cpp">
+      <Filter>Source Files\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="Logging.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="TracerWriteFile.cpp">
+      <Filter>Source Files\Tracer</Filter>
+    </ClCompile>
+    <ClCompile Include="drsyscall.cpp">
+      <Filter>Source Files\Tracer\SysCallInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="TracerTdataManager.cpp">
+      <Filter>Source Files\Tracer</Filter>
+    </ClCompile>
+    <ClCompile Include="TracerContextChangeManager.cpp">
+      <Filter>Source Files\Tracer</Filter>
+    </ClCompile>
+    <ClCompile Include="TracerSysCalls.cpp">
+      <Filter>Source Files\Tracer</Filter>
+    </ClCompile>
+    <ClCompile Include="drstrace_named_consts.cpp">
+      <Filter>Source Files\Tracer\SysCallInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="TracerLibCalls.cpp">
+      <Filter>Source Files\Tracer</Filter>
+    </ClCompile>
+    <ClCompile Include="Pyrebox_libcalls.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Pyrebox_named_consts.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\avifil32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\avrt.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\bcrypt.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Cabinet.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\CertPolEng.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\clfsw32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ClusApi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ComCtl32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ComDlg32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ComSvcs.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\corrEngine.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\credui.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Crypt32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\CryptNet.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\cryptui.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\cryptxml.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\cscapi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\d3d9.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\d3d10.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\d3d10_1.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\d3d11.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\davclnt.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\DbgEng.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\DbgHelp.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\dciman32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\DhcpCSvc.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\dhcpcsvc6.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\dhcpsapi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\dinput8.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\DnsAPI.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\dpx.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\drt.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\drtprov.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\drttransport.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\dsound.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\DSProp.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\DSUIExt.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\dwmapi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\dxgi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\dxva2.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\eappcfg.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\eappprxy.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ElsCore.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\encapi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\esent.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\evr.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\FaultRep.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\fontsub.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\fwpuclnt.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\fxsutility.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Gdi32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\GdiPlus.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\GPEdit.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\HLink.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Icm32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Icmui.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ImageHlp.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\imgutil.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Imm32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\infocardapi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\IPHlpApi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Iprop.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Kernel32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\KernelBase.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ksuser.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ktmw32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\LoadPerf.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\locationapi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Lz32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\magnification.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\MAPI32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Mf.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Mfplat.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\mfplay.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\mfreadwrite.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\MgmtAPI.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Mpr.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Mprapi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\MSAcm32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Mscms.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\mscoree.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\msctfmonitor.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\msdelta.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\msdmo.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\msdrm.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Msi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\MSImg32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\MSRating.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\MSTask.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\msvfw32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\MsWSock.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\msxml6.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ncrypt.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ndfapi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ndproxystub.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\NetAPI32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\newdev.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\normaliz.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ntdll.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\NtDsAPI.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Ole32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\OleAcc.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\OleDlg.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\OlePro32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\OpenGL32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Pdh.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\powrprof.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\prntvpt.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\propsys.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\quartz.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\qutil.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\qwave.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\RASAPI32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\RASDlg.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ResUtils.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\RichEd20.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Rpcns4.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\RpcRT4.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\rstrtmgr.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Rtm.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Rtutils.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\sas.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\SCardDlg.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Secur32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\SensAPI.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\sensorsapi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\SetupAPI.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Sfc.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\shdocvw.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\shell32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ShFolder.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ShLwApi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\sisbkup.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\slc.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\slcext.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\slwga.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\SnmpAPI.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\SrClient.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Sti.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\structuredquery.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\t2embed.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Tapi32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\taskschd.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\tbs.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\tdh.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Traffic.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\txfw32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\UIAutomationCore.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Url.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Urlmon.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\UserEnv.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\USP10.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Uxtheme.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\VdmDbg.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Version.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\virtdisk.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\vssapi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\WebServices.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\wecapi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\WER.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\wevtapi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\WinBio.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\windowscodecs.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\WinFax.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\winhttp.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\WinInet.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\WinMM.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\winsatapi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\WinSCard.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\WinTrust.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\wlanapi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\wlanui.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Wldap32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\wmdrmsdk.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\wmiutils.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\wmvcore.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Wow32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\WS2_32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\wscapi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\wsdapi.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\WSnmp32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\WSock32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\WtsApi32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\xmllite.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\xoleHlp.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\xpsprint.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\Misc.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\OleAut32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\User32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\AclUI.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ActiveDS.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\AdvAPI32.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\advpack.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\ASycFilt.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="DllPrototypes\AuthZ.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo\PyreboxDlls</Filter>
+    </ClCompile>
+    <ClCompile Include="Drltrace_libcalls.cpp">
+      <Filter>Source Files\Tracer\LibCallInfo</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README">
+      <Filter>Documents</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Heuristics.h">
+      <Filter>Header Files\PINdemonium\OEP-Heuristics</Filter>
+    </ClInclude>
+    <ClInclude Include="LongJumpHeuristic.h">
+      <Filter>Header Files\PINdemonium\OEP-Heuristics</Filter>
+    </ClInclude>
+    <ClInclude Include="EntropyHeuristic.h">
+      <Filter>Header Files\PINdemonium\OEP-Heuristics</Filter>
+    </ClInclude>
+    <ClInclude Include="PushadPopadHeuristic.h">
+      <Filter>Header Files\PINdemonium\OEP-Heuristics</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpOuterSectionHeuristic.h">
+      <Filter>Header Files\PINdemonium\OEP-Heuristics</Filter>
+    </ClInclude>
+    <ClInclude Include="GdbDebugger.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ScyllaWrapperInterface.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="HookSyscalls.h">
+      <Filter>Header Files\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="HookFunctions.h">
+      <Filter>Header Files\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterHandler.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcInfo.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="OepFinder.h">
+      <Filter>Header Files\PINdemonium</Filter>
+    </ClInclude>
+    <ClInclude Include="WriteInterval.h">
+      <Filter>Header Files\PINdemonium</Filter>
+    </ClInclude>
+    <ClInclude Include="WxorXHandler.h">
+      <Filter>Header Files\PINdemonium</Filter>
+    </ClInclude>
+    <ClInclude Include="YaraHeuristic.h">
+      <Filter>Header Files\PINdemonium\OEP-Heuristics</Filter>
+    </ClInclude>
+    <ClInclude Include="Report.h">
+      <Filter>Header Files\Report</Filter>
+    </ClInclude>
+    <ClInclude Include="ReportObject.h">
+      <Filter>Header Files\Report</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcInfo.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ReportGeneralInformation.h">
+      <Filter>Header Files\Report</Filter>
+    </ClInclude>
+    <ClInclude Include="ReportDump.h">
+      <Filter>Header Files\Report</Filter>
+    </ClInclude>
+    <ClInclude Include="Helper.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ReportLongJump.h">
+      <Filter>Header Files\Report\HeuristicsReports</Filter>
+    </ClInclude>
+    <ClInclude Include="ReportEntropy.h">
+      <Filter>Header Files\Report\HeuristicsReports</Filter>
+    </ClInclude>
+    <ClInclude Include="ReportJumpOuterSection.h">
+      <Filter>Header Files\Report\HeuristicsReports</Filter>
+    </ClInclude>
+    <ClInclude Include="ReportYaraRules.h">
+      <Filter>Header Files\Report\HeuristicsReports</Filter>
+    </ClInclude>
+    <ClInclude Include="ReportImportedFunction.h">
+      <Filter>Header Files\Report</Filter>
+    </ClInclude>
+    <ClInclude Include="json.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="md5.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessInjectionModule.h">
+      <Filter>Header Files\PINdemonium</Filter>
+    </ClInclude>
+    <ClInclude Include="ReportMainModule.h">
+      <Filter>Header Files\Report</Filter>
+    </ClInclude>
+    <ClInclude Include="HeapModule.h">
+      <Filter>Header Files\PINdemonium</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternMatchModule.h">
+      <Filter>Header Files\PINShield</Filter>
+    </ClInclude>
+    <ClInclude Include="PolymorphicCodeHandlerModule.h">
+      <Filter>Header Files\PINShield</Filter>
+    </ClInclude>
+    <ClInclude Include="PINshield.h">
+      <Filter>Header Files\PINShield</Filter>
+    </ClInclude>
+    <ClInclude Include="FakeWriteHandler.h">
+      <Filter>Header Files\PINShield</Filter>
+    </ClInclude>
+    <ClInclude Include="FakeReadHandler.h">
+      <Filter>Header Files\PINShield</Filter>
+    </ClInclude>
+    <ClInclude Include="porting.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ExceptionHandler.h">
+      <Filter>Header Files\Suppli</Filter>
+    </ClInclude>
+    <ClInclude Include="GuardPageHandler.h">
+      <Filter>Header Files\Suppli</Filter>
+    </ClInclude>
+    <ClInclude Include="AssemblyHandler.h">
+      <Filter>Header Files\Suppli</Filter>
+    </ClInclude>
+    <ClInclude Include="HiddenElements.h">
+      <Filter>Header Files\Suppli</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerTCP.h">
+      <Filter>Header Files\Suppli</Filter>
+    </ClInclude>
+    <ClInclude Include="libdft\array.hpp">
+      <Filter>Header Files\libdft</Filter>
+    </ClInclude>
+    <ClInclude Include="libdft\branch_pred.h">
+      <Filter>Header Files\libdft</Filter>
+    </ClInclude>
+    <ClInclude Include="libdft\config.h">
+      <Filter>Header Files\libdft</Filter>
+    </ClInclude>
+    <ClInclude Include="libdft\dbg.h">
+      <Filter>Header Files\libdft</Filter>
+    </ClInclude>
+    <ClInclude Include="libdft\libdft_api.h">
+      <Filter>Header Files\libdft</Filter>
+    </ClInclude>
+    <ClInclude Include="libdft\libdft_core.h">
+      <Filter>Header Files\libdft</Filter>
+    </ClInclude>
+    <ClInclude Include="libdft\tag_traits.h">
+      <Filter>Header Files\libdft</Filter>
+    </ClInclude>
+    <ClInclude Include="libdft\tagmap.h">
+      <Filter>Header Files\libdft</Filter>
+    </ClInclude>
+    <ClInclude Include="libdft\tagmap_custom.h">
+      <Filter>Header Files\libdft</Filter>
+    </ClInclude>
+    <ClInclude Include="TaintAnalysis.h">
+      <Filter>Header Files\Suppli</Filter>
+    </ClInclude>
+    <ClInclude Include="SpecialHooks.h">
+      <Filter>Header Files\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="Logging.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="tls.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="TracerWriteFile.h">
+      <Filter>Header Files\Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="TracerLibCalls.h">
+      <Filter>Header Files\Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="TracerSysCalls.h">
+      <Filter>Header Files\Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="drsyscall.h">
+      <Filter>Header Files\Tracer\SysCallInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="TracerTdataManager.h">
+      <Filter>Header Files\Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="TracerContextChangeManager.h">
+      <Filter>Header Files\Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="drstrace_named_consts.h">
+      <Filter>Header Files\Tracer\SysCallInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="Pyrebox_libcalls.h">
+      <Filter>Header Files\Tracer\LibCallInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="Drltrace_libcalls.h">
+      <Filter>Header Files\Tracer\LibCallInfo</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
