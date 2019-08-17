@@ -25,18 +25,6 @@
     <Filter Include="Header Files\Hooks">
       <UniqueIdentifier>{73b16fc3-10e8-4f1a-8d90-d120e993a640}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\PINdemonium">
-      <UniqueIdentifier>{d44ca324-388e-4cc3-a1c6-c611bde6f446}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\PINdemonium\OEP-Heuristics">
-      <UniqueIdentifier>{c82c1b21-c180-4abf-a4a2-b65a03c90ba4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\PINdemonium">
-      <UniqueIdentifier>{e8c75c99-4367-48cf-ac32-a152bc7be725}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\PINdemonium\OEP-Heuristics">
-      <UniqueIdentifier>{35aa198c-b8a2-4e0a-98e9-1ac38d9d7aa3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Report">
       <UniqueIdentifier>{a0afdd0c-1eb5-46d4-b858-d665ea95aedb}</UniqueIdentifier>
     </Filter>
@@ -49,23 +37,11 @@
     <Filter Include="Source Files\Report\HeuristicsReports">
       <UniqueIdentifier>{c2100b05-693b-4635-a84b-3fb97db9d848}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\PINShield">
-      <UniqueIdentifier>{6db8d8ed-3592-4008-b781-79e9cf0ec77e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\PINShield">
-      <UniqueIdentifier>{9f78bdfb-bdf9-4c41-9700-b3053a865a7e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Suppli">
       <UniqueIdentifier>{9b6bb058-bbf9-4919-ad84-1a42c1f53d84}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Suppli">
       <UniqueIdentifier>{8dec6967-03e7-4e9f-800d-4bc4b20e7283}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\libdft">
-      <UniqueIdentifier>{a8926b7b-b9df-4fb8-9752-6059f8af5a1d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\libdft">
-      <UniqueIdentifier>{342ef669-8724-4eb2-9b86-d37cf83d5924}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Tracer">
       <UniqueIdentifier>{ade003a0-8bf0-4d42-9188-68e2b2b24120}</UniqueIdentifier>
@@ -90,53 +66,17 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Heuristics.cpp">
-      <Filter>Source Files\PINdemonium\OEP-Heuristics</Filter>
-    </ClCompile>
-    <ClCompile Include="LongJumpHeuristic.cpp">
-      <Filter>Source Files\PINdemonium\OEP-Heuristics</Filter>
-    </ClCompile>
-    <ClCompile Include="EntropyHeuristic.cpp">
-      <Filter>Source Files\PINdemonium\OEP-Heuristics</Filter>
-    </ClCompile>
-    <ClCompile Include="PushadPopadHeuristic.cpp">
-      <Filter>Source Files\PINdemonium\OEP-Heuristics</Filter>
-    </ClCompile>
     <ClCompile Include="GdbDebugger.cpp">
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="JumpOuterSectionHeuristic.cpp">
-      <Filter>Source Files\PINdemonium\OEP-Heuristics</Filter>
-    </ClCompile>
     <ClCompile Include="Config.cpp">
-      <Filter>Source Files\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="ScyllaWrapperInterface.cpp">
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="HookSyscalls.cpp">
       <Filter>Source Files\Hooks</Filter>
     </ClCompile>
-    <ClCompile Include="HookFunctions.cpp">
-      <Filter>Source Files\Hooks</Filter>
-    </ClCompile>
-    <ClCompile Include="FilterHandler.cpp">
-      <Filter>Source Files\Helpers</Filter>
-    </ClCompile>
     <ClCompile Include="ProcInfo.cpp">
       <Filter>Source Files\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="WxorXHandler.cpp">
-      <Filter>Source Files\PINdemonium</Filter>
-    </ClCompile>
-    <ClCompile Include="WriteInterval.cpp">
-      <Filter>Source Files\PINdemonium</Filter>
-    </ClCompile>
-    <ClCompile Include="OepFinder.cpp">
-      <Filter>Source Files\PINdemonium</Filter>
-    </ClCompile>
-    <ClCompile Include="YaraHeuristic.cpp">
-      <Filter>Source Files\PINdemonium\OEP-Heuristics</Filter>
     </ClCompile>
     <ClCompile Include="Report.cpp">
       <Filter>Source Files\Report</Filter>
@@ -177,62 +117,14 @@
     <ClCompile Include="ReportMainModule.cpp">
       <Filter>Source Files\Report</Filter>
     </ClCompile>
-    <ClCompile Include="ProcessInjectionModule.cpp">
-      <Filter>Source Files\PINdemonium</Filter>
-    </ClCompile>
-    <ClCompile Include="HeapModule.cpp">
-      <Filter>Source Files\PINdemonium</Filter>
-    </ClCompile>
-    <ClCompile Include="PatternMatchModule.cpp">
-      <Filter>Source Files\PINShield</Filter>
-    </ClCompile>
-    <ClCompile Include="PolymorphicCodeHandlerModule.cpp">
-      <Filter>Source Files\PINShield</Filter>
-    </ClCompile>
-    <ClCompile Include="PINshield.cpp">
-      <Filter>Source Files\PINShield</Filter>
-    </ClCompile>
-    <ClCompile Include="FakeWriteHandler.cpp">
-      <Filter>Source Files\PINShield</Filter>
-    </ClCompile>
-    <ClCompile Include="FakeReadHandler.cpp">
-      <Filter>Source Files\PINShield</Filter>
-    </ClCompile>
     <ClCompile Include="ExceptionHandler.cpp">
-      <Filter>Source Files\Suppli</Filter>
-    </ClCompile>
-    <ClCompile Include="GuardPageHandler.cpp">
-      <Filter>Source Files\Suppli</Filter>
-    </ClCompile>
-    <ClCompile Include="AssemblyHandler.cpp">
       <Filter>Source Files\Suppli</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HiddenElements.cpp">
-      <Filter>Source Files\Suppli</Filter>
-    </ClCompile>
     <ClCompile Include="ServerTCP.cpp">
       <Filter>Source Files\Suppli</Filter>
-    </ClCompile>
-    <ClCompile Include="libdft\libdft_api.cpp">
-      <Filter>Source Files\libdft</Filter>
-    </ClCompile>
-    <ClCompile Include="libdft\libdft_core.cpp">
-      <Filter>Source Files\libdft</Filter>
-    </ClCompile>
-    <ClCompile Include="libdft\tag_traits.cpp">
-      <Filter>Source Files\libdft</Filter>
-    </ClCompile>
-    <ClCompile Include="libdft\tagmap.cpp">
-      <Filter>Source Files\libdft</Filter>
-    </ClCompile>
-    <ClCompile Include="TaintAnalysis.cpp">
-      <Filter>Source Files\Suppli</Filter>
-    </ClCompile>
-    <ClCompile Include="SpecialHooks.cpp">
-      <Filter>Source Files\Hooks</Filter>
     </ClCompile>
     <ClCompile Include="Logging.cpp">
       <Filter>Source Files\Helpers</Filter>
@@ -859,28 +751,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Heuristics.h">
-      <Filter>Header Files\PINdemonium\OEP-Heuristics</Filter>
-    </ClInclude>
-    <ClInclude Include="LongJumpHeuristic.h">
-      <Filter>Header Files\PINdemonium\OEP-Heuristics</Filter>
-    </ClInclude>
-    <ClInclude Include="EntropyHeuristic.h">
-      <Filter>Header Files\PINdemonium\OEP-Heuristics</Filter>
-    </ClInclude>
-    <ClInclude Include="PushadPopadHeuristic.h">
-      <Filter>Header Files\PINdemonium\OEP-Heuristics</Filter>
-    </ClInclude>
-    <ClInclude Include="JumpOuterSectionHeuristic.h">
-      <Filter>Header Files\PINdemonium\OEP-Heuristics</Filter>
-    </ClInclude>
     <ClInclude Include="GdbDebugger.h">
       <Filter>Header Files\Helpers</Filter>
     </ClInclude>
     <ClInclude Include="Config.h">
-      <Filter>Header Files\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="ScyllaWrapperInterface.h">
       <Filter>Header Files\Helpers</Filter>
     </ClInclude>
     <ClInclude Include="Debug.h">
@@ -889,26 +763,8 @@
     <ClInclude Include="HookSyscalls.h">
       <Filter>Header Files\Hooks</Filter>
     </ClInclude>
-    <ClInclude Include="HookFunctions.h">
-      <Filter>Header Files\Hooks</Filter>
-    </ClInclude>
-    <ClInclude Include="FilterHandler.h">
-      <Filter>Header Files\Helpers</Filter>
-    </ClInclude>
     <ClInclude Include="ProcInfo.h">
       <Filter>Header Files\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="OepFinder.h">
-      <Filter>Header Files\PINdemonium</Filter>
-    </ClInclude>
-    <ClInclude Include="WriteInterval.h">
-      <Filter>Header Files\PINdemonium</Filter>
-    </ClInclude>
-    <ClInclude Include="WxorXHandler.h">
-      <Filter>Header Files\PINdemonium</Filter>
-    </ClInclude>
-    <ClInclude Include="YaraHeuristic.h">
-      <Filter>Header Files\PINdemonium\OEP-Heuristics</Filter>
     </ClInclude>
     <ClInclude Include="Report.h">
       <Filter>Header Files\Report</Filter>
@@ -949,29 +805,8 @@
     <ClInclude Include="md5.h">
       <Filter>Header Files\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="ProcessInjectionModule.h">
-      <Filter>Header Files\PINdemonium</Filter>
-    </ClInclude>
     <ClInclude Include="ReportMainModule.h">
       <Filter>Header Files\Report</Filter>
-    </ClInclude>
-    <ClInclude Include="HeapModule.h">
-      <Filter>Header Files\PINdemonium</Filter>
-    </ClInclude>
-    <ClInclude Include="PatternMatchModule.h">
-      <Filter>Header Files\PINShield</Filter>
-    </ClInclude>
-    <ClInclude Include="PolymorphicCodeHandlerModule.h">
-      <Filter>Header Files\PINShield</Filter>
-    </ClInclude>
-    <ClInclude Include="PINshield.h">
-      <Filter>Header Files\PINShield</Filter>
-    </ClInclude>
-    <ClInclude Include="FakeWriteHandler.h">
-      <Filter>Header Files\PINShield</Filter>
-    </ClInclude>
-    <ClInclude Include="FakeReadHandler.h">
-      <Filter>Header Files\PINShield</Filter>
     </ClInclude>
     <ClInclude Include="porting.h">
       <Filter>Header Files\Helpers</Filter>
@@ -979,50 +814,8 @@
     <ClInclude Include="ExceptionHandler.h">
       <Filter>Header Files\Suppli</Filter>
     </ClInclude>
-    <ClInclude Include="GuardPageHandler.h">
-      <Filter>Header Files\Suppli</Filter>
-    </ClInclude>
-    <ClInclude Include="AssemblyHandler.h">
-      <Filter>Header Files\Suppli</Filter>
-    </ClInclude>
-    <ClInclude Include="HiddenElements.h">
-      <Filter>Header Files\Suppli</Filter>
-    </ClInclude>
     <ClInclude Include="ServerTCP.h">
       <Filter>Header Files\Suppli</Filter>
-    </ClInclude>
-    <ClInclude Include="libdft\array.hpp">
-      <Filter>Header Files\libdft</Filter>
-    </ClInclude>
-    <ClInclude Include="libdft\branch_pred.h">
-      <Filter>Header Files\libdft</Filter>
-    </ClInclude>
-    <ClInclude Include="libdft\config.h">
-      <Filter>Header Files\libdft</Filter>
-    </ClInclude>
-    <ClInclude Include="libdft\dbg.h">
-      <Filter>Header Files\libdft</Filter>
-    </ClInclude>
-    <ClInclude Include="libdft\libdft_api.h">
-      <Filter>Header Files\libdft</Filter>
-    </ClInclude>
-    <ClInclude Include="libdft\libdft_core.h">
-      <Filter>Header Files\libdft</Filter>
-    </ClInclude>
-    <ClInclude Include="libdft\tag_traits.h">
-      <Filter>Header Files\libdft</Filter>
-    </ClInclude>
-    <ClInclude Include="libdft\tagmap.h">
-      <Filter>Header Files\libdft</Filter>
-    </ClInclude>
-    <ClInclude Include="libdft\tagmap_custom.h">
-      <Filter>Header Files\libdft</Filter>
-    </ClInclude>
-    <ClInclude Include="TaintAnalysis.h">
-      <Filter>Header Files\Suppli</Filter>
-    </ClInclude>
-    <ClInclude Include="SpecialHooks.h">
-      <Filter>Header Files\Hooks</Filter>
     </ClInclude>
     <ClInclude Include="Logging.h">
       <Filter>Header Files\Helpers</Filter>

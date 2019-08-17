@@ -152,10 +152,11 @@ VOID get_bytes(W::SOCKET socket, W::LPSTR buffer, ssize_t n) {
 	}
 }
 
+/*
 VOID handle_command(W::SOCKET ClientSocket) {
 	
 	//assert(client_sock);
-
+	
 	unsigned cmd;
 	get_bytes(ClientSocket, (W::LPSTR)&cmd, sizeof(cmd));
 	if (ProcInfo::getInstance()->breakSocket) return;
@@ -181,7 +182,7 @@ VOID handle_command(W::SOCKET ClientSocket) {
 	unsigned count;
 
 	switch (cmd) {
-
+    */
 		/*
 		+        1 => AntiEvasionTricks
 		+        2 => HiddenProcesses
@@ -198,7 +199,7 @@ VOID handle_command(W::SOCKET ClientSocket) {
 		+        13 => SetMemTaints
 		+        14 => GetThreads
 		+        */
-
+     /*
 		case 1:
 		{
 			// number of strings
@@ -617,18 +618,22 @@ VOID handle_command(W::SOCKET ClientSocket) {
 			cout << "Invalid command\n" << endl;
 	}
 
-}
+}*/
+
 
 VOID ReceiveSocket(W::SOCKET ClientSocket) {
-	
+
+	/*
 	while (TRUE) {
 		cout << "Waiting for command...\n" << endl;
 		handle_command(ClientSocket);
 		if (ProcInfo::getInstance()->breakSocket) return;
 	}
+	*/
 
 }
 
+/*
 VOID setGroupByString(char** list, int count) {
 
 	ssize_t i;
@@ -672,4 +677,4 @@ VOID setGroupByString(char** list, int count) {
 		free(list[i]); //release memory
 
 	}
-}
+}*/

@@ -293,7 +293,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AssemblyHandler.cpp" />
     <ClCompile Include="DllPrototypes\AclUI.cpp" />
     <ClCompile Include="DllPrototypes\ActiveDS.cpp" />
     <ClCompile Include="DllPrototypes\AdvAPI32.cpp" />
@@ -491,40 +490,15 @@
     <ClCompile Include="DllPrototypes\xpsprint.cpp" />
     <ClCompile Include="Drltrace_libcalls.cpp" />
     <ClCompile Include="drsyscall.cpp" />
-    <ClCompile Include="FakeReadHandler.cpp" />
-    <ClCompile Include="FakeWriteHandler.cpp" />
     <ClCompile Include="GdbDebugger.cpp" />
-    <ClCompile Include="GuardPageHandler.cpp" />
-    <ClCompile Include="HeapModule.cpp">
-      <ShowIncludes Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ShowIncludes>
-      <ShowIncludes Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ShowIncludes>
-      <ShowIncludes Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ShowIncludes>
-      <ShowIncludes Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ShowIncludes>
-    </ClCompile>
     <ClCompile Include="Helper.cpp" />
-    <ClCompile Include="Heuristics.cpp" />
-    <ClCompile Include="HiddenElements.cpp" />
-    <ClCompile Include="HookFunctions.cpp" />
     <ClCompile Include="HookSyscalls.cpp" />
     <ClCompile Include="jsoncpp.cpp" />
-    <ClCompile Include="libdft\libdft_api.cpp" />
-    <ClCompile Include="libdft\libdft_core.cpp" />
-    <ClCompile Include="libdft\tagmap.cpp" />
-    <ClCompile Include="libdft\tag_traits.cpp" />
     <ClCompile Include="Logging.cpp" />
     <ClCompile Include="md5.cpp" />
-    <ClCompile Include="PatternMatchModule.cpp" />
-    <ClCompile Include="PINshield.cpp" />
-    <ClCompile Include="PolymorphicCodeHandlerModule.cpp" />
-    <ClCompile Include="ProcessInjectionModule.cpp" />
     <ClCompile Include="ProcInfo.cpp" />
-    <ClCompile Include="EntropyHeuristic.cpp" />
-    <ClCompile Include="FilterHandler.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="JumpOuterSectionHeuristic.cpp" />
     <ClCompile Include="Config.cpp" />
-    <ClCompile Include="OepFinder.cpp" />
-    <ClCompile Include="PushadPopadHeuristic.cpp" />
     <ClCompile Include="Pyrebox_libcalls.cpp" />
     <ClCompile Include="Pyrebox_named_consts.cpp" />
     <ClCompile Include="Report.cpp" />
@@ -537,27 +511,19 @@
     <ClCompile Include="ReportMainModule.cpp" />
     <ClCompile Include="ReportObject.cpp" />
     <ClCompile Include="ReportYaraRules.cpp" />
-    <ClCompile Include="ScyllaWrapperInterface.cpp" />
     <ClCompile Include="ExceptionHandler.cpp" />
     <ClCompile Include="ServerTCP.cpp" />
     <ClCompile Include="drstrace_named_consts.cpp" />
-    <ClCompile Include="SpecialHooks.cpp" />
-    <ClCompile Include="TaintAnalysis.cpp" />
     <ClCompile Include="TracerContextChangeManager.cpp" />
     <ClCompile Include="TracerLibCalls.cpp" />
     <ClCompile Include="TracerSysCalls.cpp" />
     <ClCompile Include="TracerTdataManager.cpp" />
     <ClCompile Include="TracerWriteFile.cpp" />
-    <ClCompile Include="WriteInterval.cpp" />
-    <ClCompile Include="LongJumpHeuristic.cpp" />
-    <ClCompile Include="WxorXHandler.cpp" />
-    <ClCompile Include="YaraHeuristic.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AssemblyHandler.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Drltrace_libcalls.h" />
     <ClInclude Include="drstrace_named_consts.h" />
@@ -571,40 +537,15 @@
     <ClInclude Include="TracerWriteFile.h" />
     <ClInclude Include="types.h" />
     <ClInclude Include="ExceptionHandler.h" />
-    <ClInclude Include="FakeReadHandler.h" />
-    <ClInclude Include="FakeWriteHandler.h" />
     <ClInclude Include="GdbDebugger.h" />
-    <ClInclude Include="GuardPageHandler.h" />
-    <ClInclude Include="HeapModule.h" />
     <ClInclude Include="Helper.h" />
-    <ClInclude Include="HiddenElements.h" />
-    <ClInclude Include="HookFunctions.h" />
     <ClInclude Include="HookSyscalls.h" />
     <ClInclude Include="json.h" />
-    <ClInclude Include="libdft\array.hpp" />
-    <ClInclude Include="libdft\branch_pred.h" />
-    <ClInclude Include="libdft\config.h" />
-    <ClInclude Include="libdft\dbg.h" />
-    <ClInclude Include="libdft\libdft_api.h" />
-    <ClInclude Include="libdft\libdft_core.h" />
-    <ClInclude Include="libdft\tagmap.h" />
-    <ClInclude Include="libdft\tagmap_custom.h" />
-    <ClInclude Include="libdft\tag_traits.h" />
     <ClInclude Include="Logging.h" />
     <ClInclude Include="md5.h" />
-    <ClInclude Include="PatternMatchModule.h" />
-    <ClInclude Include="PINshield.h" />
-    <ClInclude Include="PolymorphicCodeHandlerModule.h" />
     <ClInclude Include="porting.h" />
-    <ClInclude Include="ProcessInjectionModule.h" />
     <ClInclude Include="ProcInfo.h" />
-    <ClInclude Include="Heuristics.h" />
-    <ClInclude Include="EntropyHeuristic.h" />
-    <ClInclude Include="JumpOuterSectionHeuristic.h" />
     <ClInclude Include="Config.h" />
-    <ClInclude Include="FilterHandler.h" />
-    <ClInclude Include="OepFinder.h" />
-    <ClInclude Include="PushadPopadHeuristic.h" />
     <ClInclude Include="Report.h" />
     <ClInclude Include="ReportDump.h" />
     <ClInclude Include="ReportEntropy.h" />
@@ -615,14 +556,7 @@
     <ClInclude Include="ReportMainModule.h" />
     <ClInclude Include="ReportObject.h" />
     <ClInclude Include="ReportYaraRules.h" />
-    <ClInclude Include="ScyllaWrapperInterface.h" />
     <ClInclude Include="ServerTCP.h" />
-    <ClInclude Include="SpecialHooks.h" />
-    <ClInclude Include="TaintAnalysis.h" />
-    <ClInclude Include="WriteInterval.h" />
-    <ClInclude Include="LongJumpHeuristic.h" />
-    <ClInclude Include="WxorXHandler.h" />
-    <ClInclude Include="YaraHeuristic.h" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

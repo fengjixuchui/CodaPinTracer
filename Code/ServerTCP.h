@@ -1,8 +1,8 @@
 #pragma once
 #include "pin.H"
 #include "ProcInfo.h"
-#include "HiddenElements.h"
-#include "TaintAnalysis.h"
+//#include "HiddenElements.h"
+//#include "TaintAnalysis.h"
 #include <iostream>
 
 

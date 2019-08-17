@@ -339,9 +339,9 @@ print_string(void *pointer_str, bool is_wide, bluepill_tls* tdata)
 	ADDRINT deref = 0;
 	int charSize = 0;
 	if (is_wide) {
-		charSize = sizeof(char);
+		charSize = sizeof(wchar_t);
 	}
-	else charSize = sizeof(wchar_t);
+	else charSize = sizeof(char);
 
 	if (pointer_str == NULL)
 		(tdata->file_write)(tdata->threadid, tdata->buffer, tdata->OutFile, "<null>");

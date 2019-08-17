@@ -1186,6 +1186,7 @@ print_string(void *pointer_str, bool is_wide, bluepill_tls* tdata, string &type_
 		type_str.append("**");
 	}
 
+	
 	//If pointer-to-pointer print address and return
 	if (pointerToPointer) {
 		(tdata->file_write)(tdata->threadid, tdata->buffer, tdata->OutFile, PFX, pointer_str);
@@ -1196,9 +1197,9 @@ print_string(void *pointer_str, bool is_wide, bluepill_tls* tdata, string &type_
 	ADDRINT deref = 0;
 	int charSize = 0;
 	if (is_wide) {
-		charSize = sizeof(char);
+		charSize = sizeof(wchar_t);
 	}
-	else charSize = sizeof(wchar_t);
+	else charSize = sizeof(char);
 
 
 	//Print string
@@ -1211,11 +1212,11 @@ print_string(void *pointer_str, bool is_wide, bluepill_tls* tdata, string &type_
 			(tdata->file_write)(tdata->threadid, tdata->buffer, tdata->OutFile, "<invalid memory>");
 		}
 		else {
-			//LOG("Good Pointer\n");
-			(tdata->file_write)(tdata->threadid, tdata->buffer, tdata->OutFile, is_wide ? "%ls" : "%s", pointer_str);
+			(tdata->file_write)(tdata->threadid, tdata->buffer, tdata->OutFile, is_wide ? "%ls" : "%s", pointer_str);	
 		}
 
 	}
+	
 
 }
 
@@ -1463,6 +1464,11 @@ NKT_DBOBJCLASS_Reference = 128
 void
 Pyrebox_libcalls::print_arg_pyrebox(drsys_arg_t *arg, bluepill_tls* tdata, uint api_count)
 {
+
+	// Do not print if we are before the libcall and the argument is just OUT
+	if ((arg->pre) && (arg->flags == OUT))
+		return;
+
 	//Do not print if we are after the libcall and the argument is just IN
 	if ((!arg->pre) && (arg->flags == IN))
 		return;
@@ -1502,7 +1508,8 @@ Pyrebox_libcalls::print_arg_pyrebox(drsys_arg_t *arg, bluepill_tls* tdata, uint 
 	//Determine arg type and print arg accordingly
 	switch (type_wout_pointer) {
 
-		//Simple types
+	//Simple types
+	
 	case NKT_DBFUNDTYPE_SignedByte:         type_str = "char"; print_simple_value(arg, false, tdata, type_str, pointer, pointerToPointer); break;
 	case NKT_DBFUNDTYPE_UnsignedByte:		type_str = "BYTE"; print_simple_value(arg, false, tdata, type_str, pointer, pointerToPointer); break;
 	case NKT_DBFUNDTYPE_SignedWord:			type_str = "short"; print_simple_value(arg, false, tdata, type_str, pointer, pointerToPointer); break;
@@ -1515,17 +1522,19 @@ Pyrebox_libcalls::print_arg_pyrebox(drsys_arg_t *arg, bluepill_tls* tdata, uint 
 	case NKT_DBFUNDTYPE_Double:				type_str = "double"; print_simple_value(arg, false, tdata, type_str, pointer, pointerToPointer); break;
 	case NKT_DBFUNDTYPE_LongDouble:			type_str = "long double"; print_simple_value(arg, false, tdata, type_str, pointer, pointerToPointer); break;
 	case NKT_DBFUNDTYPE_Void:				type_str = "void"; print_simple_value(arg, true, tdata, type_str, pointer, pointerToPointer); break;
-
-		//Strings
+	
+	
+	//Strings
 	case NKT_DBFUNDTYPE_AnsiChar:			type_str = "char"; print_string((void *)arg->value, false, tdata, type_str, pointer, pointerToPointer); break;
 	case NKT_DBFUNDTYPE_WideChar:			type_str = "wchar_t"; print_string((void *)arg->value, true, tdata, type_str, pointer, pointerToPointer); break;
 
-
+	
 		//Complex types
 	case NKT_DBOBJCLASS_Struct:				type_str = "struct"; print_complex_value(arg, tdata, type_str, pointer, pointerToPointer, reference, type_wout_pointer); break;
 	case NKT_DBOBJCLASS_Union:				type_str = "union"; print_complex_value(arg, tdata, type_str, pointer, pointerToPointer, reference, type_wout_pointer); break;
 	case NKT_DBOBJCLASS_Typedef:			type_str = "typedef"; print_complex_value(arg, tdata, type_str, pointer, pointerToPointer, reference, type_wout_pointer); break;
 	case NKT_DBOBJCLASS_Array:				type_str = "array"; print_complex_value(arg, tdata, type_str, pointer, pointerToPointer, reference, type_wout_pointer); break;
+	
 
 	default: {
 		if (arg->value == 0)

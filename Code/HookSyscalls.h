@@ -2,9 +2,6 @@
 
 #include <map>
 #include "pin.H"
-#include "FakeReadHandler.h"
-#include "ProcessInjectionModule.h"
-#include "GuardPageHandler.h"
 
 namespace W{
 	#include "windows.h"
@@ -468,36 +465,6 @@ public:
 	static void initHooks(syscall_t *callbackArray);
 
 private:
-	//Hooks
-	//static void NtQuerySystemInformationHook(syscall_t *sc,CONTEXT *ctx, SYSCALL_STANDARD std);
-
-	static void NtQuerySystemInformationHookExit(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
-
-	
-	static void NtAllocateVirtualMemoryHook(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
-		
-	static void NtQueryInformationProcessHook(syscall_t *sc , CONTEXT *ctx , SYSCALL_STANDARD std);
-	static void NtQueryPerformanceCounterHook(syscall_t *sc,CONTEXT *ctx, SYSCALL_STANDARD std);
-	static void NtOpenProcessEntry(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
-	static void NtRequestWaitReplyPortHook(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
-	static void NtMapViewOfSectionHook(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
-	static void NtWriteVirtualMemoryHook(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
-	static void NtCreateThreadExHook(syscall_t *sc , CONTEXT *ctx , SYSCALL_STANDARD std);
-	static void NtResumeThreadHook(syscall_t *sc , CONTEXT *ctx , SYSCALL_STANDARD std);
-	static void NtQueueApcThreadHook(syscall_t *sc , CONTEXT *ctx , SYSCALL_STANDARD std);
-
-	/* [Suppli] */
-	static void NtDelayexecutionHook(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
-	static void NtProtectVirtualMemoryHook(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
-	static void NtQueryDirectoryObjectHook(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
-	static void NtOpenKeyHook(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
-	static void NtOpenDirectoryObjectHook(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
-	static void NtCreateFileHook(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
-	static void NtGetContextThreadHook(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
-	static void NtEnumerateKeyHook(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
-	static void NtQueryValueKeyHook(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
-	static void NtQueryAttributesFileHook(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
-	static void NtQueryObjectHook(syscall_t *sc, CONTEXT *ctx, SYSCALL_STANDARD std);
 
 	//Helpers
 	static void syscallEntry(THREADID thread_id, CONTEXT *ctx, SYSCALL_STANDARD std, void *v);

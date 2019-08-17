@@ -1111,7 +1111,7 @@ VOID PIN_FAST_ANALYSIS_CALL PrintInfoAfter(const char *rtn_name, const char *img
 		if (Config::getInstance()->getPdbFlag()) {
 
 			//Print only if output
-			if (curr_arg.flags == INOUT) {
+			if (curr_arg.flags == INOUT || curr_arg.flags == OUT) {
 				Pyrebox_libcalls::print_arg_pyrebox(&curr_arg, tdata, api_count);
 			}
 
@@ -1791,7 +1791,8 @@ void TracerLibCalls::initLibCallsTracer() {
 		QueryPerformanceCounter(&li);
 		__int64 t_bef = li.QuadPart;*/
 
-		//-> Init Pyrebox
+		//-> Init Pyrebox (FOR NOW MAKE IT THE ONLY CHOICE)
+		// drltrace is pointless
 		Pyrebox_libcalls::initHashtables();
 
 		/*
@@ -1801,6 +1802,7 @@ void TracerLibCalls::initLibCallsTracer() {
 		cerr << t_aft << endl;*/
 	}
 	//Otherwise fill drltrace hashmap from config file
+	
 	else {
 
 		//Parse drltrace configuration file

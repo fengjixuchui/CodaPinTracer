@@ -1492,7 +1492,7 @@ libcall_info_t User32_info[] = {
 		{-1, "Return value", NKT_DBFUNDTYPE_SignedDoubleWord, 0, 4, INOUT },
 		{0, "hInstance", NKT_DBFUNDTYPE_UnsignedDoubleWord, 0, 4, IN },
 		{1, "uID", NKT_DBFUNDTYPE_UnsignedDoubleWord, 0, 4, IN },
-		{2, "lpBuffer", NKT_DBFUNDTYPE_AnsiChar | NKT_DBOBJCLASS_Pointer, 0, 1, INOUT },
+		{2, "lpBuffer", NKT_DBFUNDTYPE_AnsiChar | NKT_DBOBJCLASS_Pointer, 0, 1, OUT },
 		{3, "cchBufferMax", NKT_DBFUNDTYPE_SignedDoubleWord, 0, 4, IN },
 	}
 	},
@@ -1501,7 +1501,7 @@ libcall_info_t User32_info[] = {
 		{-1, "Return value", NKT_DBFUNDTYPE_SignedDoubleWord, 0, 4, INOUT },
 		{0, "hInstance", NKT_DBFUNDTYPE_UnsignedDoubleWord, 0, 4, IN },
 		{1, "uID", NKT_DBFUNDTYPE_UnsignedDoubleWord, 0, 4, IN },
-		{2, "lpBuffer", NKT_DBFUNDTYPE_WideChar | NKT_DBOBJCLASS_Pointer, 0, 2, INOUT },
+		{2, "lpBuffer", NKT_DBFUNDTYPE_WideChar | NKT_DBOBJCLASS_Pointer, 0, 2, OUT },
 		{3, "cchBufferMax", NKT_DBFUNDTYPE_SignedDoubleWord, 0, 4, IN },
 	}
 	},
