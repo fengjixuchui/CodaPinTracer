@@ -6,6 +6,7 @@
 #define IN 0
 #define INOUT 1
 #define OUT 2
+#define UNK 3
 
 typedef enum {
 

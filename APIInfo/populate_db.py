@@ -29,7 +29,7 @@ conn = sqlite3.connect("deviare32_populated.sqlite")
 c = conn.cursor()
 
 # Add two IN_OUT columns in FunctionArgs table
-in_col_query = "ALTER TABLE FunctionsArgs ADD Input INT DEFAULT 1;"
+in_col_query = "ALTER TABLE FunctionsArgs ADD Input INT DEFAULT 0;"
 out_col_query = "ALTER TABLE FunctionsArgs ADD Output INT DEFAULT 0;"
 c.execute(in_col_query)
 c.execute(out_col_query)
@@ -92,7 +92,7 @@ for child in root:
                                     count += 1
 
                                 # Just input
-                                else:
+                                elif "in" in arg_type:
                                     fid = res[0]
                                     aid = res[1]
                                     update = "update FunctionsArgs set Input = 1 where Id = %d and FuncId = %d;" % (aid,fid)

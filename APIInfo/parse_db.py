@@ -5,7 +5,6 @@ import unicodedata
 
 #Global variables
 typedef_list = [] #Used to unwrap typedef chain in DB
-F = open("Pyrebox_libcalls_corr.cpp","wb")
 
 # CONSTANTS IN THE DATABASE
 
@@ -114,7 +113,8 @@ def generate_enumeration(
                  typ,
                  name,
                  size,
-                 is_out,
+                 is_input,
+				 is_output,
                  arg_num):
 
 	arg=[]
@@ -123,8 +123,7 @@ def generate_enumeration(
 
 	# Normalize arg name
 	if type(arg_name) is unicode:
-		arg_name_norm = unicodedata.normalize(
-			'NFKD', arg_name).encode('ascii', 'ignore')
+		arg_name_norm = unicodedata.normalize('NFKD', arg_name).encode('ascii', 'ignore')
 	else:
 		arg_name_norm = arg_name
 
@@ -134,8 +133,7 @@ def generate_enumeration(
 
 	# Normalize name
 	if type(name) is unicode:
-		enum_name_norm = unicodedata.normalize(
-			'NFKD', name).encode('ascii', 'ignore')
+		enum_name_norm = unicodedata.normalize('NFKD', name).encode('ascii', 'ignore')
 	else:
 		enum_name_norm = name
 
@@ -143,10 +141,14 @@ def generate_enumeration(
 
 	arg.append(size)
 
-	if(is_out):
+	if(is_input and is_output):
 		arg.append("INOUT")
-	else:
+	elif(is_output):
+		arg.append("OUT")
+	elif(is_input):
 		arg.append("IN")
+	else:
+		arg.append("UNK")
 
 	return arg
 
@@ -158,18 +160,18 @@ def generate_reference(
                  align,
                  deref_type_id,
                  deref_type_class,
-                 is_out,
+                 is_input,
+				 is_output,
                  arg_num):
 
 	# Generate referenced arg
-	arg = generate_arg("",deref_type_id,deref_type_class,is_out, arg_num, True)
+	arg = generate_arg("",deref_type_id,deref_type_class,is_input, is_output, arg_num, True)
 	
 	if (arg != None):
 
 		# Normalize name
 		if type(arg_name) is unicode:
-		    arg_name_norm = unicodedata.normalize(
-		        'NFKD', arg_name).encode('ascii', 'ignore')
+		    arg_name_norm = unicodedata.normalize('NFKD', arg_name).encode('ascii', 'ignore')
 		else:
 		    arg_name_norm = arg_name
 
@@ -190,18 +192,18 @@ def generate_pointer(
                  align,
                  deref_type_id,
                  deref_type_class,
-                 is_out,
+                 is_input,
+				 is_output,
                  arg_num):
 
 	# Generates referenced arg
-	arg = generate_arg("",deref_type_id,deref_type_class,is_out, arg_num, True)
+	arg = generate_arg("",deref_type_id,deref_type_class,is_input,is_output, arg_num, True)
 	
 	if (arg != None):
 
 		# Normalize name
 		if type(arg_name) is unicode:
-		    arg_name_norm = unicodedata.normalize(
-		        'NFKD', arg_name).encode('ascii', 'ignore')
+		    arg_name_norm = unicodedata.normalize('NFKD', arg_name).encode('ascii', 'ignore')
 		else:
 		    arg_name_norm = arg_name
 
@@ -215,16 +217,16 @@ def generate_pointer(
 
 
 # Generates array entry
-def generate_array(arg_name, typ, max, size, align, is_out, arg_num):
+def generate_array(arg_name, typ, max, size, align, is_input, is_output, arg_num):
 	arg=[]
 
 	arg.append(arg_num)
 
 	# Normalize name
-    if type(arg_name) is unicode:
-    	arg_name_norm = unicodedata.normalize('NFKD', arg_name).encode('ascii', 'ignore')
-    else:
-        arg_name_norm = arg_name
+	if type(arg_name) is unicode:
+		arg_name_norm = unicodedata.normalize('NFKD', arg_name).encode('ascii', 'ignore')
+	else:
+		arg_name_norm = arg_name
 
 	arg.append(arg_name_norm)
 	
@@ -235,25 +237,27 @@ def generate_array(arg_name, typ, max, size, align, is_out, arg_num):
 
 	arg.append(size)
 
-	if(is_out):
+	if(is_input and is_output):
 		arg.append("INOUT")
-	else:
+	elif(is_output):
+		arg.append("OUT")
+	elif(is_input):
 		arg.append("IN")
-
+	else:
+		arg.append("UNK")
 
 	return arg
 
 
 # Generates typedef entry
-def generate_typedef(arg_name, typ, equivalent_arg, is_out, arg_num):
+def generate_typedef(arg_name, typ, equivalent_arg, is_input, is_output, arg_num):
 	arg=[]
 
 	arg.append(arg_num)
 
 	# Normalize name
 	if type(arg_name) is unicode:
-		arg_name_norm = unicodedata.normalize(
-			'NFKD', arg_name).encode('ascii', 'ignore')
+		arg_name_norm = unicodedata.normalize('NFKD', arg_name).encode('ascii', 'ignore')
 	else:
 		arg_name_norm = arg_name
 
@@ -267,18 +271,20 @@ def generate_typedef(arg_name, typ, equivalent_arg, is_out, arg_num):
 	# None added instead of size
 	arg.append(equivalent_arg)
 
-	if(is_out):
+	if(is_input and is_output):
 		arg.append("INOUT")
-	else:
+	elif(is_output):
+		arg.append("OUT")
+	elif(is_input):
 		arg.append("IN")
-	
-
+	else:
+		arg.append("UNK")
 	return arg
 
 #Generates struct/union entry
 #->arg_name is name of argument
 #->name is name of struct/union type
-def generate_struct_or_union(arg_name, typ, name, size, align, flags, is_out, arg_num, struct_or_union):
+def generate_struct_or_union(arg_name, typ, name, size, align, flags, is_input, is_output, arg_num, struct_or_union):
 	
 	arg=[]
 
@@ -286,8 +292,7 @@ def generate_struct_or_union(arg_name, typ, name, size, align, flags, is_out, ar
 
 	# Normalize arg name
 	if type(arg_name) is unicode:
-		arg_name_norm = unicodedata.normalize(
-			'NFKD', arg_name).encode('ascii', 'ignore')
+		arg_name_norm = unicodedata.normalize('NFKD', arg_name).encode('ascii', 'ignore')
 	else:
 		arg_name_norm = arg_name
 
@@ -299,41 +304,40 @@ def generate_struct_or_union(arg_name, typ, name, size, align, flags, is_out, ar
 	else:
 		arg.append("NKT_DBOBJCLASS_Union")
 
-
 	# Normalize arg type name
-        if type(name) is unicode:
-            arg_type_norm = unicodedata.normalize(
-                'NFKD', name).encode('ascii', 'ignore')
-        else:
-            arg_type_norm = name
+	if type(name) is unicode:
+		arg_type_norm = unicodedata.normalize('NFKD', name).encode('ascii', 'ignore')
+	else:
+		arg_type_norm = name
 
 	arg.append(arg_type_norm)
 
 	arg.append(size)
 
-	if(is_out):
+	if(is_input and is_output):
 		arg.append("INOUT")
-	else:
+	elif(is_output):
+		arg.append("OUT")
+	elif(is_input):
 		arg.append("IN")
+	else:
+		arg.append("UNK")
 	
-
 	return arg
 
 
 # Generates basic argument entry
-# No need to worry wrt 32 vs 64 bits
-def generate_basic_arg(arg_name, typ, is_out, arg_num):
+def generate_basic_arg(arg_name, typ, is_input, is_output, arg_num):
 	
 	arg=[]
 
 	arg.append(arg_num)
 
 	# Normalize name
-        if type(arg_name) is unicode:
-            arg_name_norm = unicodedata.normalize(
-                'NFKD', arg_name).encode('ascii', 'ignore')
-        else:
-            arg_name_norm = arg_name
+	if type(arg_name) is unicode:
+		arg_name_norm = unicodedata.normalize('NFKD', arg_name).encode('ascii', 'ignore')
+	else:
+		arg_name_norm = arg_name
 
 	arg.append(str(arg_name))
 
@@ -387,10 +391,14 @@ def generate_basic_arg(arg_name, typ, is_out, arg_num):
 	
 	arg.append(size)
 
-	if(is_out):
+	if(is_input and is_output):
 		arg.append("INOUT")
-	else:
+	elif(is_output):
+		arg.append("OUT")
+	elif(is_input):
 		arg.append("IN")
+	else:
+		arg.append("UNK")
 	
 	return arg
 
@@ -399,58 +407,64 @@ def generate_basic_arg(arg_name, typ, is_out, arg_num):
 def generate_arg(    arg_name,
                      arg_typ,
                      arg_class,
-                     is_out,
-                     arg_num , first_call):
+                     is_input,
+					 is_output,
+                     arg_num ,
+					 first_call):
 
-
-    # TODO - FIX - We need to correct the arg_class, because it seems that
-    # the db has some errors
-    while arg_class >= 65536:
-        arg_class -= 65536
+	# TODO - FIX - We need to correct the arg_class, because it seems that
+	# the db has some errors
+	while arg_class >= 65536:
+		arg_class -= 65536
 
 	#Differentiate between different argument classes
 	#-- Fundamental/basic arg
-    if arg_class == NKT_DBOBJCLASS_Fundamental:
-        return generate_basic_arg(arg_name,
-                                 arg_typ,
-                                 is_out,
-                                 arg_num)
+	if arg_class == NKT_DBOBJCLASS_Fundamental:
+		return generate_basic_arg(arg_name,
+								arg_typ,
+								is_input,
+								is_output,
+								arg_num)
 
 	#-- Struct	
-    elif arg_class == NKT_DBOBJCLASS_Struct:
+	elif arg_class == NKT_DBOBJCLASS_Struct:
             
-		# Fetch struct info from db
+	    # Fetch struct info from db
 		c.execute("select Id,Name,Size,Align,Flags from Structs where Id = %d" % (arg_typ))
 		res = c.fetchone()
-		
+            
 		if res is not None:
 			new_struct = []
 
 			# Generate struct arg entry                
 			new_struct = generate_struct_or_union(arg_name,
-									res[0],
-									res[1],
-									res[2],
-									res[3],
-									res[4],
-									is_out,
-									arg_num, "struct")
-		
+										res[0],
+										res[1],
+										res[2],
+										res[3],
+										res[4],
+										is_input,
+										is_output,
+										arg_num, "struct")
+			return new_struct
+		else:
+			return None
+
 		# Code for fecting struct fields -> Maybe use to build struct definitions?
 		'''
-                c.execute("select StructId,Id,Name,Offset,Bits,Flags,TypeId,TypeClass" +
-                                   " from StructsMembers where StructId = %d order by Id ASC" % (arg_typ))
-                sub_fields = c.fetchall()
-		
+				c.execute("select StructId,Id,Name,Offset,Bits,Flags,TypeId,TypeClass" +
+									" from StructsMembers where StructId = %d order by Id ASC" % (arg_typ))
+				sub_fields = c.fetchall()
+
 		#Header.write("typedef _"+str(arg_name)+" { \n")
-		
-                for sub_field in sub_fields:
 
-                	# Skip incorrect blank fields in the db
-                        if sub_field[3] == 0 and sub_field[1] > 1:
-                            continue
+				for sub_field in sub_fields:
 
-                        #offset = sub_field[3] / 8
+					# Skip incorrect blank fields in the db
+						if sub_field[3] == 0 and sub_field[1] > 1:
+							continue
+
+						#offset = sub_field[3] / 8
 
 			#Print struct somewhere -> Just two structs, do it manually
 			#new_struct.append(sub_field[2])
@@ -461,32 +475,28 @@ def generate_arg(    arg_name,
 			#if(field != None):
 			#	F.write("W:: "+str(field[1]))
 
-                        #new_struct.add_field(offset,
-                        #                     self.generate_arg(sub_field[2],
-                        #                                       sub_field[6],
-                        #                                       sub_field[7],
-                        #                                       is_out, addr=addr +
-                        #                                       offset,
-                        #                                       val=None,
-                        #                                       arg_num=arg_num))
-                #else:
-                    
-		   #mwmon.printer("Unsupported type: A struct has been returned as" +
-                   #               "return value (EAX/RAX), or as register parameter (RCX/RDX/R8/R9).")
-                
-		'''
-			return new_struct
-		else:
-			return None
-	
+						#new_struct.add_field(offset,
+						#                     self.generate_arg(sub_field[2],
+						#                                       sub_field[6],
+						#                                       sub_field[7],
+						#                                       is_out, addr=addr +
+						#                                       offset,
+						#                                       val=None,
+						#                                       arg_num=arg_num))
+				#else:
+					
+			#mwmon.printer("Unsupported type: A struct has been returned as" +
+					#               "return value (EAX/RAX), or as register parameter (RCX/RDX/R8/R9).")
+		'''	
 	# -- Union
 	elif arg_class == NKT_DBOBJCLASS_Union:
-		
-		# Fetch union info from db
+            
+	    # Fetch union info from db
 		c.execute("select Id,Name,Size,Align,Flags from Unions where Id = %d" % (arg_typ))
-			res = c.fetchone()
-		
+		res = c.fetchone()
+            
 		if res is not None:
+		
 			# Generate union arg entry                
 			new_union = generate_struct_or_union(arg_name,
 										res[0],
@@ -494,8 +504,12 @@ def generate_arg(    arg_name,
 										res[2],
 										res[3],
 										res[4],
-										is_out,
+										is_input,
+										is_output,
 										arg_num, "union")
+			return new_union
+		else:
+			return None
 
 		# Code for fecting union fields -> Maybe use to build union definitions?
 		'''
@@ -517,80 +531,76 @@ def generate_arg(    arg_name,
                     mwmon.printer("Unsupported type: A union has been returned as" +
                                   "return value (EAX/RAX), or as register parameter (RCX/RDX/R8/R9).")
 		'''
-			return new_union
-		else:
-			return None
 
 	# -- typdef
 	# Typedefs in DB are in a chain, where the last entry contains the ACTUAL type
 	# --> So we just get last entry. Getting all of them would make the final file even bigger 
-        elif arg_class == NKT_DBOBJCLASS_Typedef:
+	elif arg_class == NKT_DBOBJCLASS_Typedef:
             
-	    # Fetch typedef info from db	
-	    c.execute("select Id,Name,TypeId,TypeClass from TypeDefs where Id = %d" % (arg_typ))
-            res = c.fetchone()
+		# Fetch typedef info from db	
+		c.execute("select Id,Name,TypeId,TypeClass from TypeDefs where Id = %d" % (arg_typ))
+		res = c.fetchone()
             
-	    if res is not None:
+		if res is not None:
 
-		# Generate typedef arg entry
-                t = generate_typedef(arg_name,
-                            res[0], None,
-                            #generate_arg(res[1],
-                            #                  res[2],
-                            #                  res[3],
-                            #                  is_out,
-                            #                  arg_num),
-                            is_out,
-                            arg_num)
-
-		
-		# Recursive call to get equivalent definition of typedef
-		# -> False to specify that the call is recursive
-		gen_arg = generate_arg(res[1],res[2],res[3],is_out,arg_num, False)
-
-		#Use global list which gets emptied everytime a typedef chain has been resolved		
-		global typedef_list
-		
-		#Append generated equivalent definition		
-		typedef_list.append(gen_arg)
-		
-		# We are back to the root of the recursion
-		# --> We get the first element in typedef_list, which will contain the basic type
-		if(first_call == True):
-
-			# Get first non None element in typedef_list
-			first = []
-			for elem in typedef_list:
-				if elem != None:
-					first = elem
-					break
-
-			# If no equivalent definition found, return original one
-			if(first == []):
-				return t
-
-			#print first
-
-			#Update name of argument 
-			first[1] = t[1]
+			# Generate typedef arg entry
+			t = generate_typedef(arg_name,
+						res[0], None,
+						#generate_arg(res[1],
+						#                  res[2],
+						#                  res[3],
+						#                  is_out,
+						#                  arg_num),
+						is_input,
+						is_output,
+						arg_num)
 			
-			#Empty typedef list			
-			typedef_list = []
-			return first
-						
+			# Recursive call to get equivalent definition of typedef
+			# -> False to specify that the call is recursive
+			gen_arg = generate_arg(res[1],res[2],res[3],is_input,is_output,arg_num, False)
 
-                return t
-            else:
-                return None
+			#Use global list which gets emptied everytime a typedef chain has been resolved		
+			global typedef_list
+		
+			#Append generated equivalent definition		
+			typedef_list.append(gen_arg)
+		
+			# We are back to the root of the recursion
+			# --> We get the first element in typedef_list, which will contain the basic type
+			if(first_call == True):
 
-        # -- Array
+				# Get first non None element in typedef_list
+				first = []
+				for elem in typedef_list:
+					if elem != None:
+						first = elem
+						break
+
+				# If no equivalent definition found, return original one
+				if(first == []):
+					return t
+
+				#print first
+
+				#Update name of argument 
+				first[1] = t[1]
+				
+				#Empty typedef list			
+				typedef_list = []
+				return first
+
+				#return t
+		else:
+			return None
+
+	# -- Array
 	elif arg_class == NKT_DBOBJCLASS_Array:
-            
-	    # Fetch array info from db
-	    c.execute("select Id,Max,Size,Align,TypeId,TypeClass from Arrays where Id = %d" % (arg_typ))
-        res = c.fetchone()
-            
-	    if res is not None:
+			
+		# Fetch array info from db
+		c.execute("select Id,Max,Size,Align,TypeId,TypeClass from Arrays where Id = %d" % (arg_typ))
+		res = c.fetchone()
+			
+		if res is not None:
 
 			#Generate array arg entry                
 			the_arr = generate_array(arg_name,
@@ -598,91 +608,113 @@ def generate_arg(    arg_name,
 									res[1],
 									res[2],
 									res[3],
-									is_out,
-									arg_num)
+									is_input,
+									is_output,
+									arg_num)              
+			return the_arr
+		else:
+			return None
 
 		# Code for fecting array fields -> Maybe use to build array definitions?
 		'''
-                if addr is not None:
-                    size_of_element = res[2] / res[1]
-                    for i in range(0, res[1]):
-                        the_arr.add_field(i,
-                                          self.generate_arg("",
-                                                            res[4],
-                                                            res[5],
-                                                            is_out,
-                                                            addr=addr,
-                                                            val=None,
-                                                            arg_num=arg_num))
-                        addr += size_of_element
-                else:
-                    mwmon.printer("Unsupported type: An array has been returned as" +
-                                  "return value (EAX/RAX), or as register parameter (RCX/RDX/R8/R9).")
-		'''                
-			return the_arr
-        else:
-            return None
+				if addr is not None:
+					size_of_element = res[2] / res[1]
+					for i in range(0, res[1]):
+						the_arr.add_field(i,
+											self.generate_arg("",
+															res[4],
+															res[5],
+															is_out,
+															addr=addr,
+															val=None,
+															arg_num=arg_num))
+						addr += size_of_element
+				else:
+					mwmon.printer("Unsupported type: An array has been returned as" +
+									"return value (EAX/RAX), or as register parameter (RCX/RDX/R8/R9).")
+		'''  
 	
 	# -- Pointer
-    elif arg_class == NKT_DBOBJCLASS_Pointer:
-            
-	    # Fetch pointer info from db
-	    c.execute("select Id,Size,Align,TypeId,TypeClass from Pointers where Id = %d" % (arg_typ))
-            res = c.fetchone()
-            
-	    if res is not None:
+	elif arg_class == NKT_DBOBJCLASS_Pointer:
+		
+		# Fetch pointer info from db
+		c.execute("select Id,Size,Align,TypeId,TypeClass from Pointers where Id = %d" % (arg_typ))
+		res = c.fetchone()
+		
+		if res is not None:
 
 			# Generate pointer arg entry                
 			the_pointer = generate_pointer(arg_name,
-										arg_typ,
-										res[1],
-										res[2],
-										res[3],
-										res[4],
-										is_out,
-										arg_num)
-            return the_pointer
-        else:
-             return None
+											arg_typ,
+											res[1],
+											res[2],
+											res[3],
+											res[4],
+											is_input,
+											is_output,
+											arg_num)
+			return the_pointer
+		else:
+			return None
+
+		# Code for fecting array fields -> Maybe use to build array definitions?
+		'''
+				if addr is not None:
+					size_of_element = res[2] / res[1]
+					for i in range(0, res[1]):
+						the_arr.add_field(i,
+											self.generate_arg("",
+															res[4],
+															res[5],
+															is_out,
+															addr=addr,
+															val=None,
+															arg_num=arg_num))
+						addr += size_of_element
+				else:
+					mwmon.printer("Unsupported type: An array has been returned as" +
+									"return value (EAX/RAX), or as register parameter (RCX/RDX/R8/R9).")
+		'''  
 
 	# -- Reference
-    elif arg_class == NKT_DBOBJCLASS_Reference:
+	elif arg_class == NKT_DBOBJCLASS_Reference:
             
-	    # Fetch reference info from db
-	    c.execute("select Id,Size,Align,TypeId,TypeClass from XReferences where Id = %d" % (arg_typ))
-            res = c.fetchone()
-            
-	    if res is not None:
+		# Fetch reference info from db
+		c.execute("select Id,Size,Align,TypeId,TypeClass from XReferences where Id = %d" % (arg_typ))
+		res = c.fetchone()
+			
+		if res is not None:
 
 			# Generate reference entry from db                
 			the_pointer = generate_reference(arg_name,
-                                        arg_typ,
-                                        res[1],
-                                        res[2],
-										res[3],
-										res[4],
-										is_out,
-                                        arg_num)
-            return the_pointer
-        else:
-            return None
+											arg_typ,
+											res[1],
+											res[2],
+											res[3],
+											res[4],
+											is_input,
+											is_output,
+											arg_num)
+			return the_pointer
+		else:
+			return None
 
 	# -- Enumeration
-    elif arg_class == NKT_DBOBJCLASS_Enumeration:
+	elif arg_class == NKT_DBOBJCLASS_Enumeration:
+			
+		# Fetch enumeration info from db
+		c.execute("select Id,Name,Size,Align from Enumerations where Id = %d" % (arg_typ))
+		res = c.fetchone()
             
-	    # Fetch enumeration info from db
-	    c.execute("select Id,Name,Size,Align from Enumerations where Id = %d" % (arg_typ))
-            res = c.fetchone()
-            
-	    if res is not None:
-
+		if res is not None:
 			# Generate enumeration entry from db                
 			return generate_enumeration(arg_name,
-									res[0],
-									res[1],
-									res[2],
-									is_out,
-									arg_num)
+										res[0],
+										res[1],
+										res[2],
+										is_input,
+										is_output,
+										arg_num)
         else:
             return None
 
@@ -694,34 +726,255 @@ def populate_args(func_id,func_class,func_name,func_flags, func_ret_typeid, func
 		return []
         
 	#Fetch funcargs data from db
-	c.execute("select Id,Name,TypeId,TypeClass,IsOutput from FunctionsArgs where FuncId = %d order by Id ASC" % (func_id))
-    params = c.fetchall()
+	c.execute("select Id,Name,TypeId,TypeClass,IsOutput,Input,Output from FunctionsArgs where FuncId = %d order by Id ASC" % (func_id))
+	params = c.fetchall()
 
 	#Start arg count from 0
 	arg_num = 0
 	for param in params:
-		# Set is_out based on IsOutput field
-		is_out = False if param[4] == 0 else True
+		# Set is_out based on Input and Output fields 5/6
+		is_input = False
+		is_output = False
+		if param[5] == 1:
+			is_input = True
+		if param[6] == 1:
+			is_output = True
 
 		# Obtain arg data
-		arg = generate_arg(param[1], param[2], param[3], is_out, arg_num, True)
+		arg = generate_arg(param[1], param[2], param[3], is_input, is_output, arg_num, True)
 
 		# Increase argument count
 		arg_num += 1
-		
+
 		# Append arg to args list
 		args.append(arg)
 
 
-#Beginning of array of libcall structs
-F.write(str('libcall_info_t pyreboxdb_info[] = {\n'))
-
-#Connect to db
+# Connect to db
 conn = sqlite3.connect("deviare32_populated.sqlite")
 c = conn.cursor()
 
+# Fetch module information
+query = "select * from Modules"
+c.execute(query)
+modules = c.fetchall()
+
+# Seen funcs
+funcs_seen = []
+
+for module in modules:
+
+	mod_id = module[0]
+	mod_name = module[1]
+
+	# Open file relative to module
+	file_name = mod_name.split(".")[0]
+	F = open("./DllPrototypes/"+file_name+".cpp","wb")
+
+	# Write include
+	F.write("#include \"../Pyrebox_libcalls.h\"")
+	F.write("\n\n")
+
+	# Beginning of array of libcall structs
+	F.write("libcall_info_t "+file_name+"_info[] = {\n")
+
+	# Fetch functions relative to module
+	c.execute("select FuncId from ModulesFuncs where ModId = %d" % (mod_id))
+	funcs = c.fetchall()
+
+	# First pass to get alphabetical order
+	func_entries = []
+	for func in funcs:
+		# Get Functions from db
+		c.execute("select * from Functions where Id = %d" % func[0])
+		entry = c.fetchall()[0]
+		func_id = entry[0]
+		func_name = entry[2]
+		if func_name != None:
+			func_entries.append((func_id,func_name))
+
+	# Sort func_entries based on func_name
+	func_entries.sort(key=lambda t : tuple(t[1].lower()))
+
+	for func in func_entries:
+
+		# Get Functions from db
+		c.execute("select * from Functions where Id = %d" % func[0])
+		entry = c.fetchall()[0]
+
+		#print(entry)
+
+		#Fetch function data obtained from DB
+		func_id = entry[0]
+		func_class = entry[1]
+		func_name = entry[2]
+		func_flags = entry[3]
+		func_ret_typeid =entry[4]
+		func_ret_class = entry[5]
+		
+		#Update seen funcs
+		funcs_seen.append(func_id)
+
+		#print func_name
+
+		# Write func struct to file only if name different from None
+		if(func_name != None):
+				
+			#Init function args	
+			args = []
+			#Init retval
+			ret = None
+
+			#Obtain retval data
+			ret = generate_arg("Return value", func_ret_typeid, func_ret_class, False, True, -1, True)
+			if ret!=None:
+				#Add double pointers
+				ret_type_list = ret[2].split('|')
+				if len(ret_type_list) == 3:
+					ret[2] = ret_type_list[0] + "| " + "NKT_DBOBJCLASS_PointerPointer"
+
+				#Remove quotation marks from data
+				conc = ",".join(map(str, ret))+"\n"
+			
+			#Obtain args data
+			populate_args(func_id,func_class,func_name,func_flags, func_ret_typeid, func_ret_class, args, c)
+
+			#Start printing struct
+			F.write(str('\t{ ')+'"'+str(func_name)+'"'+str(',')+str(len(args))+str(',')+'\n')
+			F.write(str('\t{ ')+'\n')
+
+			#Print ret value
+			if ret!=None:
+				#F.write(conc)
+				conc = conc.split(",")
+
+				#Begin argument
+				F.write(str('\t\t{'))
+							
+				#Arg_num
+				if conc[0] and conc[0]!=str('None'):
+					F.write(conc[0]+str(', '))
+				else:
+					F.write(str('0, '))
+
+				#Arg_name
+				if conc[1] and conc[1]!=str('None'):
+					F.write('"'+conc[1]+'"'+str(', '))
+				else:
+					F.write(str('0, '))
+
+				#Arg_type
+				if conc[2] and conc[2]!=str('None'):
+					F.write(conc[2]+str(', '))
+				else:
+					F.write(str('0, '))
+
+				#Arg_type_name
+				if conc[3] and conc[3]!=str('None'):
+					F.write('"'+conc[3]+'"'+str(', '))
+				else:
+					F.write(str('0, '))
+
+				#Size
+				if conc[4] and conc[4]!=str('None'):
+					F.write(conc[4]+str(', '))
+				else:
+					F.write(str('0, '))
+
+				#InOut
+				if conc[5] and conc[5]!=str('None'):
+					F.write(conc[5].rstrip()+str(' '))
+				else:
+					F.write(str('0'))
+
+				F.write(str('},\n'))	
+
+			else:
+				F.write(str('{ 0 },\n'))
+
+			#Print args
+			for arg in args:
+
+				if arg!=None:
+
+					#Add double pointers
+					arg_type_list = arg[2].split('|')
+
+					if len(arg_type_list) == 3:
+						arg[2] = arg_type_list[0] + "| " + "NKT_DBOBJCLASS_PointerPointer"
+					
+					#Remove quotation marks
+					conc = ",".join(map(str, arg))+"\n"
+					conc = conc.split(",")
+
+					#Begin argument
+					F.write(str('\t\t{'))
+							
+					#Arg_num
+					if conc[0] and conc[0]!=str('None'):
+						F.write(conc[0]+str(', '))
+					else:
+						F.write(str('0, '))
+
+					#Arg_name
+					if conc[1] and conc[1]!=str('None'):
+						F.write('"'+conc[1]+'"'+str(', '))
+					else:
+						F.write(str('0, '))
+
+					#Arg_type
+					if conc[2] and conc[2]!=str('None'):
+						F.write(conc[2]+str(', '))
+					else:
+						F.write(str('0, '))
+
+					#Arg_type_name
+					if conc[3] and conc[3]!=str('None'):
+						F.write('"'+conc[3]+'"'+str(', '))
+					else:
+						F.write(str('0, '))
+
+					#Size
+					if conc[4] and conc[4]!=str('None'):
+						F.write(conc[4]+str(', '))
+					else:
+						F.write(str('0, '))
+
+					#InOut
+					if conc[5] and conc[5]!=str('None'):
+						F.write(conc[5].rstrip()+str(' '))
+					else:
+						F.write(str('0'))
+
+					F.write(str('},\n'))				
+			
+
+				else:
+					F.write(str('{ 0 },\n'))	
+
+			#Print end of args array and end of struct
+			F.write(str('\t}')+'\n');
+			F.write(str('\t},')+'\n');			
+
+	#End of outermost array
+	F.write(str('};'))
+	F.write("\n")
+	F.write(mod_name+ "arraySize = (sizeof("+ mod_name + "_info) / sizeof(+ "+mod_name+"_info[0]));")
+	F.close()
+
+
+# ----- Create separate file for funcs not belonging to a module (Misc.cpp) -----
+F = open("./DllPrototypes/Misc.cpp","wb")
+
+# Write include
+F.write("#include \"../Pyrebox_libcalls.h\"")
+F.write("\n\n")
+
+# Beginning of array of libcall structs
+F.write("libcall_info_t noDll_info[] = {\n")
+
 # Get Functions from db
-query = ("select * from Functions")
+query = ("select * from Functions order by Name COLLATE NOCASE")
 c.execute(query)
 results = c.fetchall()
 
@@ -730,16 +983,17 @@ for entry in results:
 	
 	#Fetch function data obtained from DB
 	func_id = entry[0]
-    func_class = entry[1]
-	func_name = entry[2]
-    func_flags = entry[3]
-    func_ret_typeid =entry[4]
-    func_ret_class = entry[5]
- 
-	print func_name
+	if func_id in funcs_seen:
+		continue
+	func_class = entry[1]
+	func_name = entry[2] 
+	func_flags = entry[3]
+	func_ret_typeid =entry[4]
+	func_ret_class = entry[5]
+
 
 	#Write func struct to file only if name different from None
-	if(func_name != None):
+	if(func_name != None and "::" not in func_name):
     		
 		#Init function args	
 		args = []
@@ -747,7 +1001,7 @@ for entry in results:
 		ret = None
 
 		# Obtain retval data
-		ret = generate_arg("Return value", func_ret_typeid, func_ret_class, True, -1, True)
+		ret = generate_arg("Return value", func_ret_typeid, func_ret_class, False, True, -1, True)
 		if ret!=None:
 			#Add double pointers
 			ret_type_list = ret[2].split('|')
@@ -877,6 +1131,10 @@ for entry in results:
 		F.write(str('\t}')+'\n');
 		F.write(str('\t},')+'\n');			
 
-#End of outermost array
-F.write(str('};'));
+# End of outermost array
+F.write(str('};'))
+F.write("\n")
+F.write("#define NODLL_SIZE \ \n(sizeof(noDll_info) / sizeof(noDll_info[0]))")
+F.write("\n\n")
+F.write("size_t\nnoDLL_info_size(void)\n{\n\treturn NODLL_SIZE;\n}")
 F.close()

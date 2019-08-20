@@ -18,6 +18,15 @@ If you are experiencing the following error message during the Windows SDK insta
 
 Try this [workaround](https://stackoverflow.com/a/32322920) to trick the installer into thinking that a compatible version of .NET is installed. We used [Microsoft .NET Framework 4.6.2](https://www.microsoft.com/en-US/download/details.aspx?id=53344) in our tests.
 
+## API Info Generation
+
+All the things required for the API Info Generation are in the APIInfo folder.
+Such a folder contains a DB (**deviare_32_populated**) with all the info required by the tracer (e.g. number of arguments, types, etc.).
+This DB is a modified version of the one used by Pyrebox; the only difference is that there is a distinction between IN, OUT and INOUT.
+To recreate the DB from Pyrebox's one, just run the **populate_db.py** script
+
+By running the **parse_db.py** script, the **DllPrototypes** folder will be populated with .cpp files, one for every DLL, containing the info
+required for an accurate tracing
 
 ## Compilation
 
