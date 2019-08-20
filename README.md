@@ -20,13 +20,15 @@ Try this [workaround](https://stackoverflow.com/a/32322920) to trick the install
 
 ## API Info Generation
 
-All the things required for the API Info Generation are in the APIInfo folder.
-Such a folder contains a DB (**deviare_32_populated**) with all the info required by the tracer (e.g. number of arguments, types, etc.).
-This DB is a modified version of the one used by Pyrebox; the only difference is that there is a distinction between IN, OUT and INOUT.
-To recreate the DB from Pyrebox's one, just run the **populate_db.py** script
+Everything that is required for the API Info Generation phase is in the **APIInfo** folder.
 
-By running the **parse_db.py** script, the **DllPrototypes** folder will be populated with .cpp files, one for every DLL, containing the info
-required for an accurate tracing
+Such a folder contains a DB (**deviare_32_populated**) with all the information required by the tracer (e.g. number of arguments, types, etc.).
+
+This DB is a modified version of the one used by Pyrebox; the only difference is that arguments can be either labeled as IN, OUT ,INOUT and UNK (if input/output info is not available).
+To recreate the DB from Pyrebox's one, just run the **populate_db.py** script.
+
+By running the **parse_db.py** script, the **DllPrototypes** folder will be populated with .cpp files, one for every DLL, containing all the data structures
+required for an accurate tracing.
 
 ## Compilation
 
