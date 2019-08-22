@@ -1,6 +1,21 @@
-# This script enumerates the exports for the input DLL, providing for each one the following triple [ordinal, name, start_RVA, range] 
+# This script enumerates the exports for the input DLL,
+# providing for each one the following triple: 
+# [ordinal, name, start_RVA, range
+#  	
+# 	end addresses: {
+# 		"rets" -> addresses of rets, both from outer exp and internal stub
+#		"jmps" ->
+#			{
+#				"import" -> imported exp name 
+#               "imp_addr" -> address of import in idata
+#               "jmp_addr" -> address where the jump takes place 
+#               "dll" -> imported dll namwe
+#			}
+# 	}
+#
+# ] 
 # USAGE: 
-# C:\Users\Simus\Desktop\DLLs IDB>"C:\Program Files\IDA 6.8\idaw.exe" -A -S"ReadFuncts.py <DLL_Path>" <DLL_Name>.idb_path
+# CodaPinTracerFolder\ExpInfo >"C:\Program Files\IDA 6.8\idaw.exe" -A -S"ReadFuncts.py <DLL_Path>" <DLL_Name>.idb_path
 
 import idc
 import idaapi
@@ -9,7 +24,67 @@ import pefile
 import json
 from capstone import *
 
+# Globals for import related data structures
 idata_range = ()
+import_module_name = ""
+imports_dic = {}
+
+# Thanks Russia: http://redplait.blogspot.com/2010/09/apisetschemadll.html 
+apisetschemadll_resolution = {
+	"api-ms-win-core-console-l1-1-0" : ["kernel32.dll"],
+	"api-ms-win-core-datetime-l1-1-0" : ["kernel32.dll"],
+	"api-ms-win-core-debug-l1-1-0" : ["kernelbase.dll"],
+	"api-ms-win-core-delayload-l1-1-0" : ["kernel32.dll"],
+	"api-ms-win-core-errorhandling-l1-1-0" : ["kernel32.dll", "kernelbase.dll"],
+	"api-ms-win-core-fibers-l1-1-0" : ["kernelbase.dll"],
+	"api-ms-win-core-file-l1-1-0" : ["kernel32.dll", "kernelbase.dll"],
+	"api-ms-win-core-handle-l1-1-0" : ["kernel32.dll", "kernelbase.dll"], 
+	"api-ms-win-core-heap-l1-1-0" : ["kernelbase.dll"],
+	"api-ms-win-core-io-l1-1-0" : ["kernel32.dll", "kernelbase.dll"],
+	"api-ms-win-core-interlocked-l1-1-0" : ["kernelbase.dll"],
+	"api-ms-win-core-libraryloader-l1-1-0" : ["kernelbase.dll"],
+	"api-ms-win-core-localregistry-l1-1-0" : ["kernel32.dll"],
+	"api-ms-win-core-localization-l1-1-0" : ["kernelbase.dll"],
+	"api-ms-win-core-memory-l1-1-0" : ["kernelbase.dll"],
+	"api-ms-win-core-misc-l1-1-0" : ["kernelbase.dll"],
+	"api-ms-win-core-namedpipe-l1-1-0" : ["kernelbase.dll"],
+	"api-ms-win-core-processenvironment-l1-1-0" : ["kernelbase.dll"],
+	"api-ms-win-core-processthreads-l1-1-0" : ["kernel32.dll", "kernelbase.dll"],
+	"api-ms-win-core-profile-l1-1-0" : ["kernelbase.dll"],
+	"api-ms-win-core-rtlsupport-l1-1-0" : ["ntdll.dll"],
+	"api-ms-win-core-string-l1-1-0" : ["kernelbase.dll"],
+	"api-ms-win-core-synch-l1-1-0" : ["kernel32.dll", "kernelbase.dll"],
+	"api-ms-win-core-sysinfo-l1-1-0" : ["kernelbase.dll"],
+	"api-ms-win-core-threadpool-l1-1-0"	: ["kernelbase.dll"],
+	"api-ms-win-core-ums-l1-1-0" : ["kernel32.dll"],
+	"api-ms-win-core-util-l1-1-0" : ["kernel32.dll", "kernelbase.dll"],
+	"api-ms-win-core-xstate-l1-1-0" : ["ntdll.dll"],
+	"api-ms-win-security-base-l1-1-0" : ["kernelbase.dll"],
+	"api-ms-win-security-lsalookup-l1-1-0" : ["sechost.dll"],
+	"api-ms-win-security-sddl-l1-1-0" : ["sechost.dll"],
+	"api-ms-win-service-core-l1-1-0" : ["sechost.dll"],
+	"api-ms-win-service-management-l1-1-0" : ["sechost.dll"],
+	"api-ms-win-service-management-l2-1-0" : ["sechost.dll"],
+	"api-ms-win-service-winsvc-l1-1-0" : ["sechost.dll"]		
+}
+
+def imp_cb(ea, name, ordinal):
+
+	# NOTE: ordinal seems broken, it's always 0
+
+	imports_dic[ea] = [import_module_name, name]
+	
+	'''
+	if not name:
+		f.write("%08x: ord#%d\n" % (ea, ordinal))
+	else:
+		f.write(str(ea)+"\n")
+		f.write("%08x: %s (ord#%d)\n" % (ea, name, ordinal))
+	'''
+
+	# True -> Continue enumeration
+	# False -> Stop enumeration
+	return True
 
 # Get rets from inner function
 def get_rets(bb, end_address):
@@ -20,7 +95,6 @@ def get_rets(bb, end_address):
 		
 		# Get start address making sure to strip the trailing L
 		if curr_func.startEA == bb.startEA:
-			f.write("FOUND INNER\n")
 			
 			# This fails if the function is implemented outside (e.g. ntdll), so we need to catch the exception
 			try:
@@ -34,7 +108,7 @@ def get_rets(bb, end_address):
 				
 				# Examine BBs with no successors
 				if not list(bb.succs()):
-					f.write("empty internal:"+hex(bb.startEA)+"\n")
+					#f.write("empty internal:"+hex(bb.startEA)+"\n")
 
 					bb_len = int(bb.endEA - bb.startEA)
 					if bb_len != 0:
@@ -54,10 +128,10 @@ def get_rets(bb, end_address):
 					# Get last instruction of BB
 					ins = list(md.disasm(bb_bytes, bb.startEA))[-1]
 
-					# CASE 1: BB ends with RET N -> dump ret address
+					# Dump ret address
 					if ins.mnemonic == "ret":
-						f.write("INT -- 0x%x:\t%s\t%s\n" %(ins.address, ins.mnemonic, ins.op_str))
-						end_address[0].append(ins.address)
+						#f.write("INT -- 0x%x:\t%s\t%s\n" %(ins.address, ins.mnemonic, ins.op_str))
+						end_address["rets"].append(ins.address)
 
 	return end_address
 
@@ -87,8 +161,6 @@ def is_jmp_from_stub(bb, flowchart):
 		return False
 	
 	for bb in preds:
-		
-		f.write("PRED reached\n")
 		
 		bb_len = int(bb.endEA - bb.startEA)
 		if bb_len != 0:
@@ -123,7 +195,6 @@ def is_jmp_from_stub(bb, flowchart):
 			
 			mnem = ins.mnemonic
 
-			f.write(str(i) + " +- 0x%x:\t%s\t%s\n" %(ins.address, ins.mnemonic, ins.op_str))
 			if i == 0:
 				if mnem != "mov" or ins.reg_name(ins.operands[0].reg) != "edi" or ins.reg_name(ins.operands[1].reg) != "edi":
 					return False
@@ -145,10 +216,10 @@ def is_jmp_from_stub(bb, flowchart):
 	return True
 
 
-# Given an export, returns in a tuple (ret_addresses, jmp_addresses)
+# Given an export, returns in a dic {rets, jmp_to_imps}
 def fetch_end_addr(function, start_addr, name, f):
 	
-	end_address = [[],[]]
+	end_address = {"rets" : [], "jmps_to_imps" : []}
 
 	# This fails if the function is implemented outside (e.g. ntdll), so we need to catch the exception
 	try:
@@ -160,28 +231,15 @@ def fetch_end_addr(function, start_addr, name, f):
 
 	# Iterate over BBs
 	num_bbs = len(list(flowchart))
-	f.write("name"+ name + "\n")
+	#f.write("name"+ name + "\n")
 	for bb in flowchart:	
 
 		#f.write(hex(bb.startEA)+"\n")
 		#f.write(hex(bb.endEA)+"\n")
 
-		'''
-		if bb.startEA == function.startEA:
-			root = True
-			sp_offset_in = 0
-			# Calculate par_in (export prototype + initial argument locations)
-			par_in = calc_parin(bb.startEA, G.graph["args"])
-		'''
-
-		if bb.endEA-bb.startEA <= 0:
-			# Incorrectly formed block due to internal
-			f.write("Incorrect:"+name+", start addr:"+hex(bb.startEA)+", end addr:"+hex(bb.endEA)+"diff:"+hex(bb.endEA-bb.startEA)+"\n")
-			f.write(str(list(bb.succs()))+"\n")
-		
 		# Examine BBs with no successors
 		if not list(bb.succs()):
-			f.write("empty:"+hex(bb.startEA)+"\n")
+			#f.write("empty:"+hex(bb.startEA)+"\n")
 
 			bb_len = int(bb.endEA - bb.startEA)
 			if bb_len != 0:
@@ -203,8 +261,8 @@ def fetch_end_addr(function, start_addr, name, f):
 
 			# CASE 1: BB ends with RET N -> dump ret address
 			if ins.mnemonic == "ret":
-				f.write("1 -- 0x%x:\t%s\t%s\n" %(ins.address, ins.mnemonic, ins.op_str))
-				end_address[0].append(ins.address)
+				#f.write("1 -- 0x%x:\t%s\t%s\n" %(ins.address, ins.mnemonic, ins.op_str))
+				end_address["rets"].append(ins.address)
 
 			# CASE 2: BB ends with jmp to import
 			elif ins.mnemonic == "jmp":
@@ -214,83 +272,16 @@ def fetch_end_addr(function, start_addr, name, f):
 				disp = op.mem.disp
 
 				if base_reg == 0 and disp >= idata_range[0] and disp <= idata_range[1]: 
-					f.write("2 -- 0x%x:\t%s\t%s\n" %(ins.address, ins.mnemonic, ins.op_str))
-					f.write(hex(function.startEA)+"\n")
-					f.write(hex(bb.startEA)+"\n")
-					end_address[1].append(ins.address)
+					#f.write("2 -- 0x%x:\t%s\t%s\n" %(ins.address, ins.mnemonic, ins.op_str))
+					imp_info = imports_dic[disp]
+					imp_entry = {"jmp_addr": ins.address, "imp_addr": disp, "dll": imp_info[0], "import": imp_info[1] }
+
+					end_address["jmps_to_imps"].append(imp_entry)
 
 			# CASE 3: jmp from stub to real function
 			elif is_jmp_from_stub(bb, flowchart):
-				f.write("3 -- 0x%x:\t%s\t%s\n" %(ins.address, ins.mnemonic, ins.op_str))
-				end_address = get_rets(bb, end_address) 
-			
-			'''
-			else:
-				f.write(str(num_bbs)+"\n")
-				f.write("4 -- 0x%x:\t%s\t%s\n" %(ins.address, ins.mnemonic, ins.op_str))
-
-			
-			for ins in md.disasm(bb_bytes, bb.startEA):
-				if ins.mnemonic == "ret":
-					#f.write("0x%x:\t%s\t%s\n" %(ins.address, ins.mnemonic, ins.op_str))
-					end_address.append(ins.address)
-
-			# CASE 1: export well formed ends with ret N -> dump ret address
-			if bb_len !=0 :
-
-				for ins in md.disasm(bb_bytes, bb.startEA):
-					if ins.mnemonic == "ret":
-						#f.write("0x%x:\t%s\t%s\n" %(ins.address, ins.mnemonic, ins.op_str))
-						end_address.append(ins.address)
-			
-			elif num_bbs == 2:
-
-					for ins in md.disasm(bb_bytes, bb.startEA):
-						if ins.mnemonic == "mov" or ins.mnemonic == "push" or ins.mnemonic == "call":
-							# CASE 2: internal stub is called. Dump rets of internal stub
-							f.write("2 -- 0x%x:\t%s\t%s\n" %(ins.address, ins.mnemonic, ins.op_str))
-							#end_address.append(ins.address)
-						elif ins.mnemonic == "jmp":
-							# CASE 3: jump to external function. Fetch import from IAT
-							f.write("3 -- 0x%x:\t%s\t%s\n" %(ins.address, ins.mnemonic, ins.op_str))
-						else:
-							f.write("4 -- 0x%x:\t%s\t%s\n" %(ins.address, ins.mnemonic, ins.op_str))
-				
-			
-			#Iterate over instructions
-			#f.write("BB start\n")
-			for ins in md.disasm(bb_bytes, bb.startEA):
-				f.write("0x%x:\t%s\t%s\n" %(ins.address, ins.mnemonic, ins.op_str))
-
-			
-			# For now rely on IDA for SP analysis
-			# NB: without adding ins.size we get the stack offset at current instruction, like IDA
-			
-			sp_off = idc.GetSpd(ins.address)
-			f.write("SP_OFFSET_IDA: "+str(sp_off)+"\n")
-
-			# Map sp to ip
-			rva_to_sp[hex(ins.address)] = sp_off
-
-			
-			# Check for presence of "push ebp"
-			if ins.mnemonic == "push":
-				operand = ins.operands[0]
-				if operand.type == CS_OP_REG and register_consts[ins.reg_name(operand.reg)] == 5: 
-					f.write("Scozzo su push ebp\n")
-					if get_number_of_bits() == 32:
-						G.graph["bp"] = sp_off - 4
-					else:
-						G.graph["bp"] = sp_off - 8
-
-		# Add sp_offset from IDA
-		rva_to_sp = compute_sp_offset(bb.startEA, bb.endEA, rva_to_sp, f, G)
-
-		# List BB's successors
-		for succ in bb.succs():
-			#f.write("  -> %s\n" % format_bb(succ))
-			G.add_edge(bb.id, succ.id)
-	'''
+				#f.write("3 -- 0x%x:\t%s\t%s\n" %(ins.address, ins.mnemonic, ins.op_str))
+				end_address = get_rets(bb, end_address)
 
 	return end_address
 
@@ -324,23 +315,7 @@ for exp in pe.DIRECTORY_ENTRY_EXPORT.symbols:
 	ordinal = exp.ordinal
 	
 	# Add entry to dict
-	dict_exp[hex(rva)] = {"ordinal" : ordinal, "name" : name, "rva" : rva, "range" : 0}
-
-'''
-# Iterate Imports
-for section in pe.sections:
-    f.write(section.Name)
-    f.write("\tVirtual Address: " + hex(section.VirtualAddress)+"\n")
-    f.write("\tVirtual Size: " + hex(section.Misc_VirtualSize)+"\n")
-    f.write("\tRaw Size: " + hex(section.SizeOfRawData)+"\n")
-
-for entry in pe.DIRECTORY_ENTRY_IMPORT:
-	dll_name = entry.dll.decode('utf-8')
-	#if dll_name == "KERNELBASE.dll":
-	f.write("[*]"+dll_name+"imports:\n")
-	for func in entry.imports:
-		f.write("\t%s at 0x%08x\n" % (func.name.decode('utf-8'), func.address))
-'''
+	dict_exp[hex(rva)] = {"ordinal" : ordinal, "name" : name, "rva" : rva, "range" : 0, "end_addresses" : []}
 
 idaapi.autoWait()
 
@@ -350,7 +325,31 @@ idc.rebase_program(-image_base, MSF_FIXONCE)
 
 # Fetch idata range
 idata_seg = idaapi.get_segm_by_name(".idata")
-idata_range = (idata_seg.startEA, idata_seg.endEA)
+if idata_seg:
+	idata_range = (idata_seg.startEA, idata_seg.endEA)
+else:
+	idata_range = (-1,-1)
+
+# Build imports dictionary
+nimps = idaapi.get_import_module_qty()
+
+#f.write("Found %d import(s)...\n" % nimps)
+
+for i in xrange(0, nimps):
+	import_module_name = idaapi.get_import_module_name(i)
+	if not import_module_name:
+		#f.write("Failed to get import module name for #%d\n" % i)
+		continue
+
+	# Insert module resolution part here
+	if import_module_name.lower() in apisetschemadll_resolution.keys():
+		entry = apisetschemadll_resolution[import_module_name.lower()]
+		if DLL_Name.lower() == entry[0]:
+			import_module_name = entry[1].split(".")[0]
+		else:
+			import_module_name = entry[0].split(".")[0]
+
+	idaapi.enum_import_names(i, imp_cb)
 
 for func in idautils.Functions():
 	
@@ -380,6 +379,9 @@ for func in idautils.Functions():
 		# Get ret addresses and jmp addresses in a tuple (ret, jmp)
 		end_addresses = fetch_end_addr(curr_func, start_addr, dict_exp[start_addr]["name"], f)
 
+		# Update end_addresses
+		dict_exp[start_addr]["end_addresses"] = end_addresses
+
 # Sort dictionary
 sorted_exp = []
 for k in dict_exp.keys():
@@ -394,7 +396,7 @@ for exp in sorted_exp:
 	exports.append(dict_exp[exp[0]])
 
 # Dump everything to file
-f.write(json.dumps(exports, indent = 4, sort_keys = True))
+f.write(json.dumps(exports, indent = 4))
 f.write("\n}")
 f.close()
 idc.Exit(0)

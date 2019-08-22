@@ -30,6 +30,24 @@ To recreate the DB from Pyrebox's one, just run the **populate_db.py** script.
 By running the **parse_db.py** script, the **DllPrototypes** folder will be populated with .cpp files, one for every DLL, containing all the data structures
 required for an accurate tracing.
 
+## Exports Addresses Generation
+
+Everything that is required for the Exports Addresses Generation phase is in the **ExpInfo** folder.
+
+**ReadFuncts.py** is the main script, which, given a DLL path, will analyze the DLL automatically with IDA and generate the exports related info
+in the **exports** folder inside ExpInfo. Its usage and output is explained in the python file itself.
+
+To automate **ReadFuncts.py**'s activity over a set of DLLs we can use the **GenerateExpRanges.py** script.
+In the DLL list at the beginning of the script we can specify which DLLs we want to analyze, assuming that they are located in **C:\Windows\System32** 
+
+Its usage is straightforward. The only paramater is the OS bits number to differentiate between Win32 and WOW64:
+
+    ```
+    python GenerateExpRanges <32/64>
+    ```
+
+**Note:** WOW64 should work fine but has not been tested yet
+
 ## Compilation
 
 **TODO the following instructions need to be updated to reflect the changes to paths**
