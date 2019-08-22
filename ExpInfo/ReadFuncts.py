@@ -230,7 +230,7 @@ def fetch_end_addr(function, start_addr, name, f):
 		return (None, None)
 
 	# Iterate over BBs
-	num_bbs = len(list(flowchart))
+	#num_bbs = len(list(flowchart))
 	#f.write("name"+ name + "\n")
 	for bb in flowchart:	
 
@@ -315,7 +315,7 @@ for exp in pe.DIRECTORY_ENTRY_EXPORT.symbols:
 	ordinal = exp.ordinal
 	
 	# Add entry to dict
-	dict_exp[hex(rva)] = {"ordinal" : ordinal, "name" : name, "rva" : rva, "range" : 0, "end_addresses" : []}
+	dict_exp[hex(rva)] = {"ordinal" : ordinal, "name" : name, "rva" : rva, "range" : None, "end_addresses" : []}
 
 idaapi.autoWait()
 
@@ -381,6 +381,13 @@ for func in idautils.Functions():
 
 		# Update end_addresses
 		dict_exp[start_addr]["end_addresses"] = end_addresses
+
+
+# Process forwarders
+for k in dict_exp.keys():
+	if not dict_exp[k]["range"]:
+		del dict_exp[k]
+	
 
 # Sort dictionary
 sorted_exp = []

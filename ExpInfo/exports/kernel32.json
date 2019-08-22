@@ -73,20 +73,6 @@
         }
     }, 
     {
-        "ordinal": 3, 
-        "range": 0, 
-        "rva": 784679, 
-        "name": "AcquireSRWLockExclusive", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 4, 
-        "range": 0, 
-        "rva": 784712, 
-        "name": "AcquireSRWLockShared", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 5, 
         "range": 44, 
         "rva": 284093, 
@@ -145,13 +131,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 10, 
-        "range": 0, 
-        "rva": 784742, 
-        "name": "AddDllDirectory", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 11, 
@@ -229,20 +208,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 17, 
-        "range": 0, 
-        "rva": 784795, 
-        "name": "AddVectoredContinueHandler", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 18, 
-        "range": 0, 
-        "rva": 784831, 
-        "name": "AddVectoredExceptionHandler", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 19, 
@@ -897,13 +862,6 @@
         }
     }, 
     {
-        "ordinal": 72, 
-        "range": 0, 
-        "rva": 784868, 
-        "name": "CancelThreadpoolIo", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 73, 
         "range": 38, 
         "rva": 624965, 
@@ -1081,55 +1039,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 88, 
-        "range": 0, 
-        "rva": 784899, 
-        "name": "CloseThreadpool", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 89, 
-        "range": 0, 
-        "rva": 784919, 
-        "name": "CloseThreadpoolCleanupGroup", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 90, 
-        "range": 0, 
-        "rva": 784947, 
-        "name": "CloseThreadpoolCleanupGroupMembers", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 91, 
-        "range": 0, 
-        "rva": 784982, 
-        "name": "CloseThreadpoolIo", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 92, 
-        "range": 0, 
-        "rva": 785010, 
-        "name": "CloseThreadpoolTimer", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 93, 
-        "range": 0, 
-        "rva": 785031, 
-        "name": "CloseThreadpoolWait", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 94, 
-        "range": 0, 
-        "rva": 785051, 
-        "name": "CloseThreadpoolWork", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 95, 
@@ -2138,9 +2047,7 @@
         "name": "CreateProcessInternalA", 
         "end_addresses": {
             "rets": [
-                379982, 
-                516474, 
-                516794
+                379982
             ], 
             "jmps_to_imps": []
         }
@@ -2152,8 +2059,7 @@
         "name": "CreateProcessInternalW", 
         "end_addresses": {
             "rets": [
-                333648, 
-                515748
+                333648
             ], 
             "jmps_to_imps": []
         }
@@ -2181,13 +2087,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 173, 
-        "range": 0, 
-        "rva": 785071, 
-        "name": "CreateRemoteThreadEx", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 174, 
@@ -2490,8 +2389,7 @@
         "name": "CtrlRoutine", 
         "end_addresses": {
             "rets": [
-                518568, 
-                518681
+                518568
             ], 
             "jmps_to_imps": []
         }
@@ -2574,20 +2472,6 @@
         }
     }, 
     {
-        "ordinal": 205, 
-        "range": 0, 
-        "rva": 785130, 
-        "name": "DecodePointer", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 206, 
-        "range": 0, 
-        "rva": 785153, 
-        "name": "DecodeSystemPointer", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 207, 
         "range": 106, 
         "rva": 565395, 
@@ -2639,20 +2523,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 211, 
-        "range": 0, 
-        "rva": 785182, 
-        "name": "DeleteBoundaryDescriptor", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 212, 
-        "range": 0, 
-        "rva": 785216, 
-        "name": "DeleteCriticalSection", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 213, 
@@ -2723,13 +2593,6 @@
                 }
             ]
         }
-    }, 
-    {
-        "ordinal": 218, 
-        "range": 0, 
-        "rva": 785247, 
-        "name": "DeleteProcThreadAttributeList", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 219, 
@@ -2841,13 +2704,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 227, 
-        "range": 0, 
-        "rva": 785315, 
-        "name": "DisassociateCurrentThreadFromCallback", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 228, 
@@ -2965,20 +2821,6 @@
         }
     }, 
     {
-        "ordinal": 237, 
-        "range": 0, 
-        "rva": 785344, 
-        "name": "EncodePointer", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 238, 
-        "range": 0, 
-        "rva": 785367, 
-        "name": "EncodeSystemPointer", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 239, 
         "range": 11, 
         "rva": 646988, 
@@ -3001,13 +2843,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 241, 
-        "range": 0, 
-        "rva": 785396, 
-        "name": "EnterCriticalSection", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 242, 
@@ -3598,13 +3433,6 @@
             "rets": [], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 285, 
-        "range": 0, 
-        "rva": 785426, 
-        "name": "ExitThread", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 286, 
@@ -4292,8 +4120,7 @@
         "name": "FindResourceExA", 
         "end_addresses": {
             "rets": [
-                304742, 
-                458152
+                304742
             ], 
             "jmps_to_imps": []
         }
@@ -4473,13 +4300,6 @@
         }
     }, 
     {
-        "ordinal": 348, 
-        "range": 0, 
-        "rva": 785450, 
-        "name": "FlushProcessWriteBuffers", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 349, 
         "range": 8, 
         "rva": 232187, 
@@ -4631,13 +4451,6 @@
             "rets": [], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 359, 
-        "range": 0, 
-        "rva": 785483, 
-        "name": "FreeLibraryWhenCallbackReturns", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 360, 
@@ -5820,20 +5633,6 @@
         }
     }, 
     {
-        "ordinal": 453, 
-        "range": 0, 
-        "rva": 785521, 
-        "name": "GetCurrentProcessorNumber", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 454, 
-        "range": 0, 
-        "rva": 785556, 
-        "name": "GetCurrentProcessorNumberEx", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 455, 
         "range": 2, 
         "rva": 317801, 
@@ -6851,13 +6650,6 @@
         }
     }, 
     {
-        "ordinal": 524, 
-        "range": 0, 
-        "rva": 785593, 
-        "name": "GetLogicalProcessorInformationEx", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 525, 
         "range": 11, 
         "rva": 590703, 
@@ -7194,7 +6986,6 @@
         "end_addresses": {
             "rets": [
                 605896, 
-                607477, 
                 607586
             ], 
             "jmps_to_imps": []
@@ -8237,8 +8028,7 @@
         "name": "GetSystemFirmwareTable", 
         "end_addresses": {
             "rets": [
-                430572, 
-                456036
+                430572
             ], 
             "jmps_to_imps": []
         }
@@ -9217,8 +9007,7 @@
         "name": "GlobalFlags", 
         "end_addresses": {
             "rets": [
-                425552, 
-                455429
+                425552
             ], 
             "jmps_to_imps": []
         }
@@ -9273,8 +9062,7 @@
         "name": "GlobalHandle", 
         "end_addresses": {
             "rets": [
-                305049, 
-                455180
+                305049
             ], 
             "jmps_to_imps": []
         }
@@ -9286,8 +9074,7 @@
         "name": "GlobalLock", 
         "end_addresses": {
             "rets": [
-                304355, 
-                455081
+                304355
             ], 
             "jmps_to_imps": []
         }
@@ -9328,8 +9115,7 @@
         "name": "GlobalReAlloc", 
         "end_addresses": {
             "rets": [
-                259478, 
-                455869
+                259478
             ], 
             "jmps_to_imps": []
         }
@@ -9341,8 +9127,7 @@
         "name": "GlobalSize", 
         "end_addresses": {
             "rets": [
-                259090, 
-                455313
+                259090
             ], 
             "jmps_to_imps": []
         }
@@ -9366,8 +9151,7 @@
         "name": "GlobalUnlock", 
         "end_addresses": {
             "rets": [
-                304172, 
-                455236
+                304172
             ], 
             "jmps_to_imps": []
         }
@@ -9379,8 +9163,7 @@
         "name": "GlobalUnWire", 
         "end_addresses": {
             "rets": [
-                304172, 
-                455236
+                304172
             ], 
             "jmps_to_imps": []
         }
@@ -9392,8 +9175,7 @@
         "name": "GlobalWire", 
         "end_addresses": {
             "rets": [
-                304355, 
-                455081
+                304355
             ], 
             "jmps_to_imps": []
         }
@@ -9445,13 +9227,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 718, 
-        "range": 0, 
-        "rva": 785657, 
-        "name": "HeapAlloc", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 719, 
@@ -9551,13 +9326,6 @@
         }
     }, 
     {
-        "ordinal": 725, 
-        "range": 0, 
-        "rva": 785679, 
-        "name": "HeapReAlloc", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 726, 
         "range": 8, 
         "rva": 325764, 
@@ -9573,13 +9341,6 @@
                 }
             ]
         }
-    }, 
-    {
-        "ordinal": 727, 
-        "range": 0, 
-        "rva": 785703, 
-        "name": "HeapSize", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 728, 
@@ -9698,13 +9459,6 @@
         }
     }, 
     {
-        "ordinal": 740, 
-        "range": 0, 
-        "rva": 785748, 
-        "name": "InitializeConditionVariable", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 741, 
         "range": 157, 
         "rva": 625639, 
@@ -9715,13 +9469,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 742, 
-        "range": 0, 
-        "rva": 785785, 
-        "name": "InitializeCriticalSection", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 743, 
@@ -9756,27 +9503,6 @@
                 }
             ]
         }
-    }, 
-    {
-        "ordinal": 745, 
-        "range": 0, 
-        "rva": 785820, 
-        "name": "InitializeProcThreadAttributeList", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 746, 
-        "range": 0, 
-        "rva": 785892, 
-        "name": "InitializeSListHead", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 747, 
-        "range": 0, 
-        "rva": 785921, 
-        "name": "InitializeSRWLock", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 736, 
@@ -9815,13 +9541,6 @@
         }
     }, 
     {
-        "ordinal": 739, 
-        "range": 0, 
-        "rva": 785721, 
-        "name": "InitOnceInitialize", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 749, 
         "range": 11, 
         "rva": 312779, 
@@ -9832,13 +9551,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 748, 
-        "range": 0, 
-        "rva": 785948, 
-        "name": "InterlockedCompareExchange64", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 750, 
@@ -9877,13 +9589,6 @@
         }
     }, 
     {
-        "ordinal": 753, 
-        "range": 0, 
-        "rva": 785986, 
-        "name": "InterlockedFlushSList", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 754, 
         "range": 8, 
         "rva": 312704, 
@@ -9894,27 +9599,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 755, 
-        "range": 0, 
-        "rva": 786017, 
-        "name": "InterlockedPopEntrySList", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 756, 
-        "range": 0, 
-        "rva": 786051, 
-        "name": "InterlockedPushEntrySList", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 2, 
-        "range": 0, 
-        "rva": 786086, 
-        "name": "InterlockedPushListSList", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 757, 
@@ -10186,13 +9870,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 777, 
-        "range": 0, 
-        "rva": 786120, 
-        "name": "IsThreadpoolTimerSet", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 778, 
@@ -10702,20 +10379,6 @@
         }
     }, 
     {
-        "ordinal": 827, 
-        "range": 0, 
-        "rva": 786139, 
-        "name": "LeaveCriticalSection", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 828, 
-        "range": 0, 
-        "rva": 786169, 
-        "name": "LeaveCriticalSectionWhenCallbackReturns", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 829, 
         "range": 137, 
         "rva": 324465, 
@@ -11003,8 +10666,7 @@
         "name": "LocalSize", 
         "end_addresses": {
             "rets": [
-                264381, 
-                456978
+                264381
             ], 
             "jmps_to_imps": []
         }
@@ -12007,13 +11669,6 @@
         }
     }, 
     {
-        "ordinal": 898, 
-        "range": 0, 
-        "rva": 786218, 
-        "name": "OpenProcessToken", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 899, 
         "range": 4, 
         "rva": 560900, 
@@ -12070,13 +11725,6 @@
                 }
             ]
         }
-    }, 
-    {
-        "ordinal": 903, 
-        "range": 0, 
-        "rva": 786273, 
-        "name": "OpenThreadToken", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 904, 
@@ -12388,13 +12036,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 927, 
-        "range": 0, 
-        "rva": 786327, 
-        "name": "QueryDepthSList", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 928, 
@@ -13562,13 +13203,6 @@
         }
     }, 
     {
-        "ordinal": 1020, 
-        "range": 0, 
-        "rva": 786352, 
-        "name": "ReleaseMutexWhenCallbackReturns", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 1023, 
         "range": 8, 
         "rva": 289830, 
@@ -13584,27 +13218,6 @@
                 }
             ]
         }
-    }, 
-    {
-        "ordinal": 1024, 
-        "range": 0, 
-        "rva": 786456, 
-        "name": "ReleaseSemaphoreWhenCallbackReturns", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 1021, 
-        "range": 0, 
-        "rva": 786393, 
-        "name": "ReleaseSRWLockExclusive", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 1022, 
-        "range": 0, 
-        "rva": 786426, 
-        "name": "ReleaseSRWLockShared", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 1025, 
@@ -13665,13 +13278,6 @@
         }
     }, 
     {
-        "ordinal": 1029, 
-        "range": 0, 
-        "rva": 786501, 
-        "name": "RemoveDllDirectory", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 1030, 
         "range": 68, 
         "rva": 552723, 
@@ -13706,20 +13312,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 1033, 
-        "range": 0, 
-        "rva": 786557, 
-        "name": "RemoveVectoredContinueHandler", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 1034, 
-        "range": 0, 
-        "rva": 786596, 
-        "name": "RemoveVectoredExceptionHandler", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 948, 
@@ -13828,13 +13420,6 @@
         }
     }, 
     {
-        "ordinal": 1044, 
-        "range": 0, 
-        "rva": 786636, 
-        "name": "RestoreLastError", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 1045, 
         "range": 8, 
         "rva": 268583, 
@@ -13898,13 +13483,6 @@
         }
     }, 
     {
-        "ordinal": 1049, 
-        "range": 0, 
-        "rva": 786667, 
-        "name": "RtlMoveMemory", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 1050, 
         "range": 12, 
         "rva": 234730, 
@@ -13920,13 +13498,6 @@
                 }
             ]
         }
-    }, 
-    {
-        "ordinal": 1051, 
-        "range": 0, 
-        "rva": 786687, 
-        "name": "RtlZeroMemory", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 1052, 
@@ -14529,13 +14100,6 @@
         }
     }, 
     {
-        "ordinal": 1101, 
-        "range": 0, 
-        "rva": 786707, 
-        "name": "SetCriticalSectionSpinCount", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 1102, 
         "range": 151, 
         "rva": 717143, 
@@ -14604,13 +14168,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 1107, 
-        "range": 0, 
-        "rva": 786744, 
-        "name": "SetDefaultDllDirectories", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 1108, 
@@ -14761,13 +14318,6 @@
                 }
             ]
         }
-    }, 
-    {
-        "ordinal": 1118, 
-        "range": 0, 
-        "rva": 786806, 
-        "name": "SetEventWhenCallbackReturns", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 1119, 
@@ -15585,13 +15135,6 @@
         }
     }, 
     {
-        "ordinal": 1187, 
-        "range": 0, 
-        "rva": 786896, 
-        "name": "SetThreadpoolThreadMaximum", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 1188, 
         "range": 8, 
         "rva": 210644, 
@@ -15602,20 +15145,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 1189, 
-        "range": 0, 
-        "rva": 786922, 
-        "name": "SetThreadpoolTimer", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 1190, 
-        "range": 0, 
-        "rva": 786939, 
-        "name": "SetThreadpoolWait", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 1180, 
@@ -15679,13 +15208,6 @@
                 }
             ]
         }
-    }, 
-    {
-        "ordinal": 1184, 
-        "range": 0, 
-        "rva": 786843, 
-        "name": "SetThreadToken", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 1185, 
@@ -15766,7 +15288,6 @@
         "name": "SetVDMCurrentDirectories", 
         "end_addresses": {
             "rets": [
-                608076, 
                 608111
             ], 
             "jmps_to_imps": []
@@ -15836,13 +15357,6 @@
                 }
             ]
         }
-    }, 
-    {
-        "ordinal": 1201, 
-        "range": 0, 
-        "rva": 786955, 
-        "name": "SetWaitableTimerEx", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 1202, 
@@ -15980,20 +15494,6 @@
         }
     }, 
     {
-        "ordinal": 1213, 
-        "range": 0, 
-        "rva": 787008, 
-        "name": "StartThreadpoolIo", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 1214, 
-        "range": 0, 
-        "rva": 787038, 
-        "name": "SubmitThreadpoolWork", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 1215, 
         "range": 8, 
         "rva": 429505, 
@@ -16072,13 +15572,6 @@
                 }
             ]
         }
-    }, 
-    {
-        "ordinal": 1220, 
-        "range": 0, 
-        "rva": 787055, 
-        "name": "SystemTimeToTzSpecificLocalTimeEx", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 1221, 
@@ -16272,27 +15765,6 @@
         }
     }, 
     {
-        "ordinal": 1234, 
-        "range": 0, 
-        "rva": 787100, 
-        "name": "TryAcquireSRWLockExclusive", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 1235, 
-        "range": 0, 
-        "rva": 787136, 
-        "name": "TryAcquireSRWLockShared", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 1236, 
-        "range": 0, 
-        "rva": 787169, 
-        "name": "TryEnterCriticalSection", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 1237, 
         "range": 8, 
         "rva": 221255, 
@@ -16320,13 +15792,6 @@
                 }
             ]
         }
-    }, 
-    {
-        "ordinal": 1239, 
-        "range": 0, 
-        "rva": 787202, 
-        "name": "TzSpecificLocalTimeToSystemTimeEx", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 1242, 
@@ -16468,13 +15933,6 @@
             ], 
             "jmps_to_imps": []
         }
-    }, 
-    {
-        "ordinal": 1252, 
-        "range": 0, 
-        "rva": 787247, 
-        "name": "UpdateProcThreadAttribute", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 1253, 
@@ -16629,13 +16087,6 @@
                 }
             ]
         }
-    }, 
-    {
-        "ordinal": 1259, 
-        "range": 0, 
-        "rva": 787311, 
-        "name": "VerSetConditionMask", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 1264, 
@@ -16887,34 +16338,6 @@
         }
     }, 
     {
-        "ordinal": 1282, 
-        "range": 0, 
-        "rva": 787337, 
-        "name": "WaitForThreadpoolIoCallbacks", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 1283, 
-        "range": 0, 
-        "rva": 787365, 
-        "name": "WaitForThreadpoolTimerCallbacks", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 1284, 
-        "range": 0, 
-        "rva": 787386, 
-        "name": "WaitForThreadpoolWaitCallbacks", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 1285, 
-        "range": 0, 
-        "rva": 787406, 
-        "name": "WaitForThreadpoolWorkCallbacks", 
-        "end_addresses": []
-    }, 
-    {
         "ordinal": 1286, 
         "range": 54, 
         "rva": 583318, 
@@ -16942,20 +16365,6 @@
                 }
             ]
         }
-    }, 
-    {
-        "ordinal": 1288, 
-        "range": 0, 
-        "rva": 787426, 
-        "name": "WakeAllConditionVariable", 
-        "end_addresses": []
-    }, 
-    {
-        "ordinal": 1289, 
-        "range": 0, 
-        "rva": 787460, 
-        "name": "WakeConditionVariable", 
-        "end_addresses": []
     }, 
     {
         "ordinal": 1290, 
