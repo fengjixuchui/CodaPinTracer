@@ -42,9 +42,9 @@ In the DLL list at the beginning of the script we can specify which DLLs we want
 
 Its usage is straightforward. The only paramater is the OS bits number to differentiate between Win32 and WOW64:
 
-    ```
-    python GenerateExpRanges <32/64>
-    ```
+```
+python GenerateExpRanges <32/64> 
+```
 
 **Note:** WOW64 should work fine but has not been tested yet
 
